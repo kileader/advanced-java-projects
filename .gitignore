@@ -12,6 +12,7 @@ output/*.TXT
 TEST*
 lib/analyzer.jar
 lib/java112Labs.jar
+lib/java112Demos.jar
 lib/*.war
 lib/*.ear
 
