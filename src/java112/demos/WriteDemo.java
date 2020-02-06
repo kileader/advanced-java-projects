@@ -7,10 +7,10 @@ public class WriteDemo {
     public static void main(String[] args) {
 
         try (BufferedReader in = new BufferedReader(new FileReader("testFile.txt"));
-            PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter("output/out.txt")))) {
+            PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter("output/outTest.txt")))) {
             while(in.ready()) {
                 String line = in.readLine();
-                System.out.println(line);
+                output.println(line);
             }
         } catch(FileNotFoundException fne) {
             System.out.println("Could not find file");

@@ -10,7 +10,10 @@ public class LabFive {
             return;
         } else {
             LabFive l5 = new LabFive();
-            l5.run();
+            l5.run(args[0], args[1]);
         }
+    }
+    public void run(String outputFileName, String message) {
+
     }
 }
