@@ -14,6 +14,21 @@ public class LabFive {
         }
     }
     public void run(String outputFileName, String message) {
-
+        PrintWriter outputWriter = null;
+        try {
+            outputWriter = new PrintWriter(new BufferedWriter(
+                    new FileWriter(outputFileName)));
+            outputWriter.println(message);
+        } catch (FileNotFoundException fne) {
+            System.out.println("Could not find file");
+            fne.printStackTrace();
+        } catch (IOException inputOutputException) {
+            System.out.println("Could not close output writer");
+            inputOutputException.printStackTrace();
+        } finally {
+            if (outputWriter != null) {
+                outputWriter.close();
+            }
+        }
     }
 }
