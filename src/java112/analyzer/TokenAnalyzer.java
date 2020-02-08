@@ -1,11 +1,8 @@
 /**
- * 
+ * This interface is for any class that performs an analysis.
+ * @author Kevin Leader
  */
-public class TokenAnalyzer {
-    public void processToken(String token) {
-
-    }
-    public void generateOutputFile(String inputFilePath, String outputFilePath) {
-
-    }
+interface TokenAnalyzer {
+    public void processToken(String token)
+    public void generateOutputFile(String inputFilePath, String outputFilePath
 }
