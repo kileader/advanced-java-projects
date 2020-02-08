@@ -1,8 +1,8 @@
 /*
- *  TODO 1. Where do these comments end up?
+ *  TODO 1. Where do these comments end up? On an HTML document
  *  Class: Connect4
- *  Author: Your Name Here
- *  Create date: 1/20/2009
+ *  Author: Kevin Leader
+ *  Create date: 01/08/2020
  *  Description: This class creates a command line connect 4 game.
  */
 
@@ -14,22 +14,29 @@ import java.io.IOException;
 import java.util.*;
 
 /** TODO 2. Where does this comment show up in the javadoc. What about this comment?
-  * And this one?
-  * @author TODO 3. how/when/where is this used?
-  * @created TODO 4. is this valid?
+  * And this one? They will show up at the top of the javadoc.
+  * @author TODO 3. how/when/where is this used? It is used to comment who wrote the class.
+  * @created TODO 4. is this valid? No
   * @param TODO 5. how/when/where is this used? What is the proper format, i.e.,
-  *          should I include variable type, name?
+  *          should I include variable type, name? After param is the parameter
+  *          name, then a brief description, without the variable type.
   * @return TODO 6. how/when/where is this used? What is the proper format?
+  *         after return is the name of the variable returned and a brief description
   * @throws TODO 7. how/when/where is this used? What is the proper format?
+  *         after throws is the name of an exception then a brief description
   * @see TODO 8. how/when/where is this used? What is the proper format?
+  *         This is used for any references. Can be a url or whatever.
   * @since TODO 9. how/when/where is this used? What is the proper format?
+  *         Says that the change or feature has existed since the version specified
   *
   * TODO 10. Where does this comment (below the tags) appear?
+  *         Onto the brief description above
   * TODO 11. Add some html tags within your comments above to improve formatting and readibility
+  *         Ok.
   */
 
 public class Connect4
-/** TODO 12. How does this comment affect the javadoc? */
+/** TODO 12. How does this comment affect the javadoc? I'd rather not have it*/
 {
     final static int GRID_WIDTH=7;
     final static int GRID_HEIGHT=5;
@@ -103,7 +110,7 @@ public class Connect4
     }
 
 	/** TODO 15. Write proper javadoc for this method. Should any exceptions be documented here?**/
- 
+
     public static void printgrid(int[][] aGrid)
     {
         for (int rows=GRID_HEIGHT-1; rows>=0; rows--){
@@ -269,13 +276,3 @@ public class Connect4
         return RETURN_VALUE;
     }
 }
-
-
-
-
-
-
-
-
-
-
