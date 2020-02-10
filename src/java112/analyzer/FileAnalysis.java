@@ -1,8 +1,9 @@
 package java112.analyzer;
+import java.io.*;
+import java.util.*;
 
 /**
  * This is the main controller class for the project.
- *
  * @author Kevin Leader
  */
 public class FileAnalysis {
@@ -18,38 +19,36 @@ public class FileAnalysis {
      * @param arguments arguments inputted to the command line
      */
     public void analyze(String[] arguments) {
-        if (arguments.lenth != 1) {
+        if (arguments.length != 1) {
             System.out.println("Please only input one argument"
                     + "to the command line.");
             return;
         } else {
             createAnalyzerInstances();
-
-            private String inputFilePath = arguments[0];
-            openInputFile(inputFilePath);
-
+            readInputFile(arguments[0]);
+            writeOutputFiles(arguments[0])
         }
     }
     /**
      * This method creates an instance of each analyzer class and assigns
-     * each instance to their respective instance variables
+     * each instance to their respective instance variables.
      */
     public void createAnalyzerInstances() {
         summaryAnalyzer = new FileSummaryAnalyzer();
         distinctAnalyzer = new DistinctTokensAnalyzer();
     }
     /**
-     * TODO NEEDS WORK
      * This method opens the input file then loops through all the
      * lines of the input file to generate individual tokens.
      * @param inputFilePath command line argument for the location of input file
      */
-    public String[] openInputFile(String inputFilePath) {
+    public void readInputFile(String inputFilePath) {
         try (BufferedReader input = new BufferedReader(
                 new FileReader(inputFilePath)) {
             while(input.ready()) {
                 String inputLine = input.readLine();
                 String[] tokenArray = inputLine.split("\\W"));
+                passGeneratedTokens(tokenArray);
             }
         } catch(FileNotFoundException fne) {
             System.out.println("Could not find file");
@@ -60,13 +59,20 @@ public class FileAnalysis {
         }
     }
     /**
-     * TODO EVERYTHING
      * This method passes generated tokens to all Analyzer instances.
      */
-    public void processToken(String token) {
-
+    public void passGeneratedTokens(String[] tokenArray) {
+        for (int i = 0; i < tokenArray.length; i++) {
+            summaryAnalyzer.processToken(tokenArray[i]);
+            distinctAnalyzer.processToken(tokenArray[i]);
+        }
     }
-    public writeOutputFiles() {
-        
+    /**
+     * This method writes the output files for each analyzer class.
+     */
+    public void writeOutputFiles(String inputFilePath) {
+        summaryAnalyzer.generateOutputFile(inputFilePath, "output/summary.txt");
+        distinctAnalyzer.generateOutputFile(inputFilePath,
+                "output/distinct_tokens.txt");
     }
 }
