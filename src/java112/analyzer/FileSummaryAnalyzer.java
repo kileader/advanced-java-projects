@@ -50,10 +50,10 @@ public class FileSummaryAnalyzer implements TokenAnalyzer {
             output.println("Author: Kevin Leader");
             output.println("Author Email: kleader@madisoncollege.edu");
             output.println("File: " + inputFilePath);
-            output.println("Date of Analysis: " + sdf.format(date)));
+            output.println("Date of Analysis: " + sdf.format(date));
             output.println("Last Modified: "
                     + sdf.format(inputFilePath.lastModified()));
-            output.println("File Size: " + file.length();
+            output.println("File Size: " + file.length());
             output.println("File URI: " + inputFilePath);
             output.println("Total Tokens: " + getTotalTokensCount());
         } catch(FileNotFoundException fne) {

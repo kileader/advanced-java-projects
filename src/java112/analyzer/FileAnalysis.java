@@ -26,7 +26,7 @@ public class FileAnalysis {
         } else {
             createAnalyzerInstances();
             readInputFile(arguments[0]);
-            writeOutputFiles(arguments[0])
+            writeOutputFiles(arguments[0]);
         }
     }
     /**
@@ -44,10 +44,10 @@ public class FileAnalysis {
      */
     public void readInputFile(String inputFilePath) {
         try (BufferedReader input = new BufferedReader(
-                new FileReader(inputFilePath)) {
+                new FileReader(inputFilePath))) {
             while(input.ready()) {
                 String inputLine = input.readLine();
-                String[] tokenArray = inputLine.split("\\W"));
+                String[] tokenArray = inputLine.split("\\W");
                 passGeneratedTokens(tokenArray);
             }
         } catch(FileNotFoundException fne) {

@@ -1,5 +1,10 @@
+package java112.analyzer;
+import java.io.*;
+import java.util.*;
+import java.text.*;
+
 public class DistinctTokensAnalyzer implements TokenAnalyzer {
-    private Set<String> distinctTokens;
+    private Set<String> distinctTokens = new HashSet<>();
     public DistinctTokensAnalyzer() {}
     public Set<String> getDistinctTokens() {
         return distinctTokens;
@@ -25,3 +30,4 @@ public class DistinctTokensAnalyzer implements TokenAnalyzer {
             ioe.printStackTrace();
         }
     }
+}
