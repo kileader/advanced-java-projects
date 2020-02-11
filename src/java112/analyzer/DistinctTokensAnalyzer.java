@@ -5,10 +5,13 @@ import java.text.*;
 
 public class DistinctTokensAnalyzer implements TokenAnalyzer {
     private Set<String> distinctTokens = new HashSet<>();
-    public DistinctTokensAnalyzer() {}
+    public DistinctTokensAnalyzer() {
+
+    }
     public Set<String> getDistinctTokens() {
         return distinctTokens;
     }
+    @Override
     public void processToken(String token) {
         if (token.isEmpty() || token == null || token == "\\s") {
             return;
@@ -16,9 +19,10 @@ public class DistinctTokensAnalyzer implements TokenAnalyzer {
             distinctTokens.add(token);
         }
     }
+    @Override
     public void generateOutputFile(String inputFilePath, String ouputFilePath){
         try (PrintWriter output = new PrintWriter(new BufferedWriter(
-                new FileWriter(outputFilePath)))) {
+                new FileWriter("output/distinct_tokens.txt")))) {
             for (String token : distinctTokens) {
                 output.println(token);
             }

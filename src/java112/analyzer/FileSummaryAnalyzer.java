@@ -26,6 +26,7 @@ public class FileSummaryAnalyzer implements TokenAnalyzer {
      * This method counts each word token by adding 1 to totalTokensCount.
      * @param token a token
      */
+    @Override
     public void processToken(String token) {
         if (token.isEmpty() || token == null || token == "\\s") {
             return;
@@ -39,20 +40,21 @@ public class FileSummaryAnalyzer implements TokenAnalyzer {
      * @param inputFilePath this is the file to be read and analyzed
      * @param ouputFilePath this is the text file location to be saved to
      */
+    @Override
     public void generateOutputFile(String inputFilePath, String ouputFilePath) {
         SimpleDateFormat sdf = new SimpleDateFormat(
                 "EEE MMM dd HH:mm:ss z yyyy");
         Date date = new Date();
         File file = new File(inputFilePath);
         try (PrintWriter output = new PrintWriter(new BufferedWriter(
-                new FileWriter(outputFilePath)))) {
+                new FileWriter("output/summary.txt")))) {
             output.println("Application: Token Checker Deluxe");
             output.println("Author: Kevin Leader");
             output.println("Author Email: kleader@madisoncollege.edu");
             output.println("File: " + inputFilePath);
             output.println("Date of Analysis: " + sdf.format(date));
             output.println("Last Modified: "
-                    + sdf.format(inputFilePath.lastModified()));
+                    + sdf.format(file.lastModified()));
             output.println("File Size: " + file.length());
             output.println("File URI: " + inputFilePath);
             output.println("Total Tokens: " + getTotalTokensCount());

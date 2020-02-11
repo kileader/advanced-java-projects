@@ -10,6 +10,8 @@ public class FileAnalysis {
 
     FileSummaryAnalyzer summaryAnalyzer;
     DistinctTokensAnalyzer distinctAnalyzer;
+    final String SUMMARY_PATH = "output/testing_summary_output";
+    final String DISTINCT_TOKENS_PATH = "output/distinct_tokens.txt";
 
     /**
      * This method first checks if the correct number of arguments have been
@@ -71,8 +73,9 @@ public class FileAnalysis {
      * This method writes the output files for each analyzer class.
      */
     public void writeOutputFiles(String inputFilePath) {
-        summaryAnalyzer.generateOutputFile(inputFilePath, "output/summary.txt");
+        summaryAnalyzer.generateOutputFile(inputFilePath, SUMMARY_PATH);
         distinctAnalyzer.generateOutputFile(inputFilePath,
-                "output/distinct_tokens.txt");
+                DISTINCT_TOKENS_PATH);
     }
+    public void notSureWhatThisIsFor() {}
 }
