@@ -41,7 +41,7 @@ public class FileSummaryAnalyzer implements TokenAnalyzer {
      * @param ouputFilePath this is the text file location to be saved to
      */
     @Override
-    public void generateOutputFile(String inputFilePath, String ouputFilePath) {
+    public void generateOutputFile(String inputFilePath, String outputFilePath) {
         SimpleDateFormat sdf = new SimpleDateFormat(
                 "EEE MMM dd HH:mm:ss z yyyy");
         Date date = new Date();

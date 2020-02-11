@@ -4,7 +4,7 @@ import java.util.*;
 import java.text.*;
 
 public class DistinctTokensAnalyzer implements TokenAnalyzer {
-    private Set<String> distinctTokens = new HashSet<>();
+    private SortedSet<String> distinctTokens = new TreeSet<>();
     public DistinctTokensAnalyzer() {
 
     }
@@ -20,7 +20,8 @@ public class DistinctTokensAnalyzer implements TokenAnalyzer {
         }
     }
     @Override
-    public void generateOutputFile(String inputFilePath, String ouputFilePath){
+    public void generateOutputFile(String inputFilePath,
+            String outputFilePath){
         try (PrintWriter output = new PrintWriter(new BufferedWriter(
                 new FileWriter("output/distinct_tokens.txt")))) {
             for (String token : distinctTokens) {

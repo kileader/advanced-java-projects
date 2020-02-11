@@ -10,7 +10,7 @@ public class FileAnalysis {
 
     FileSummaryAnalyzer summaryAnalyzer;
     DistinctTokensAnalyzer distinctAnalyzer;
-    final String SUMMARY_PATH = "output/testing_summary_output";
+    final String SUMMARY_PATH = "output/summary.txt";
     final String DISTINCT_TOKENS_PATH = "output/distinct_tokens.txt";
 
     /**
