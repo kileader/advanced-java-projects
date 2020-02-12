@@ -42,7 +42,7 @@ public class DistinctTokensAnalyzer implements TokenAnalyzer {
     public void generateOutputFile(String inputFilePath,
             String outputFilePath){
         try (PrintWriter output = new PrintWriter(new BufferedWriter(
-                new FileWriter("output/distinct_tokens.txt")))) {
+                new FileWriter(outputFilePath)))) {
             for (String token : distinctTokens) {
                 output.println(token);
             }

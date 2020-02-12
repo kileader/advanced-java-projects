@@ -48,7 +48,7 @@ public class FileSummaryAnalyzer implements TokenAnalyzer {
         Date date = new Date();
         File file = new File(inputFilePath);
         try (PrintWriter output = new PrintWriter(new BufferedWriter(
-                new FileWriter("output/summary.txt")))) {
+                new FileWriter(outputFilePath)))) {
             output.println("Application: Token Checker Deluxe");
             output.println("Author: Kevin Leader");
             output.println("Author Email: kleader@madisoncollege.edu");

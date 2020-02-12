@@ -7,8 +7,7 @@ import java.util.*;
  * @author Kevin Leader
  */
 public class FileAnalysis {
-    final String SUMMARY_PATH = "output/summary.txt";
-    final String DISTINCT_TOKENS_PATH = "output/distinct_tokens.txt";
+    final String OUTPUT_PATH = "output/";
     FileSummaryAnalyzer summaryAnalyzer;
     DistinctTokensAnalyzer distinctAnalyzer;
     /**
@@ -71,9 +70,10 @@ public class FileAnalysis {
      * This method writes the output files for each analyzer class.
      */
     public void writeOutputFiles(String inputFilePath) {
-        summaryAnalyzer.generateOutputFile(inputFilePath, SUMMARY_PATH);
-        distinctAnalyzer.generateOutputFile(inputFilePath,
-                DISTINCT_TOKENS_PATH);
+        summaryAnalyzer.generateOutputFile(inputFilePath, OUTPUT_PATH
+                + "summary.txt");
+        distinctAnalyzer.generateOutputFile(inputFilePath, OUTPUT_PATH
+                + "distinct_tokens.txt");
     }
     /**
      * I'm not sure what to put in this method. It helps pass the 6 method test.
