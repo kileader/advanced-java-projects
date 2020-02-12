@@ -14,13 +14,17 @@ public class DistinctTokensAnalyzer implements TokenAnalyzer {
      * This is the constructor method.
      */
     public DistinctTokensAnalyzer() {}
+    /**
+     * This method returns the distinctTokens sorted set.
+     * @return the sorted set of strings consisting of distinct tokens
+     */
     public Set<String> getDistinctTokens() {
         return distinctTokens;
     }
     /**
      * This method checks for valid tokens, then adds valid tokens to the
      * distinctTokens SortedSet.
-     * @param token [description]
+     * @param token a token taken from readInputFile method of FileAnalysis
      */
     @Override
     public void processToken(String token) {
