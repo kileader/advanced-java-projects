@@ -6,6 +6,7 @@ import java.text.*;
 /**
  * The purpose of this class is to count each non-empty non-null token,
  * and then generate a file summary to output.
+ * @author Kevin Leader
  */
 public class FileSummaryAnalyzer implements TokenAnalyzer {
     private int totalTokensCount;
@@ -38,10 +39,10 @@ public class FileSummaryAnalyzer implements TokenAnalyzer {
      * This method writes the entire summary.txt text file by getting various
      * data from the input file.
      * @param inputFilePath this is the file to be read and analyzed
-     * @param ouputFilePath this is the text file location to be saved to
      */
     @Override
-    public void generateOutputFile(String inputFilePath, String outputFilePath) {
+    public void generateOutputFile(String inputFilePath,
+            String outputFilePath) {
         SimpleDateFormat sdf = new SimpleDateFormat(
                 "EEE MMM dd HH:mm:ss z yyyy");
         Date date = new Date();

@@ -3,14 +3,25 @@ import java.io.*;
 import java.util.*;
 import java.text.*;
 
+/**
+ * This purpose of this class is to check for valid tokens, and then add them
+ * to a SortedSet to check for and output distinct values.
+ * @author Kevin Leader
+ */
 public class DistinctTokensAnalyzer implements TokenAnalyzer {
     private SortedSet<String> distinctTokens = new TreeSet<>();
-    public DistinctTokensAnalyzer() {
-
-    }
+    /**
+     * This is the constructor method.
+     */
+    public DistinctTokensAnalyzer() {}
     public Set<String> getDistinctTokens() {
         return distinctTokens;
     }
+    /**
+     * This method checks for valid tokens, then adds valid tokens to the
+     * distinctTokens SortedSet.
+     * @param token [description]
+     */
     @Override
     public void processToken(String token) {
         if (token.isEmpty() || token == null || token == "\\s") {
@@ -19,6 +30,10 @@ public class DistinctTokensAnalyzer implements TokenAnalyzer {
             distinctTokens.add(token);
         }
     }
+    /**
+     * This method generates a text document of distinct tokens.
+     * @param inputFilePath  The command line location of the input file,
+     */
     @Override
     public void generateOutputFile(String inputFilePath,
             String outputFilePath){
