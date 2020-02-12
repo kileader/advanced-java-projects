@@ -1,8 +1,9 @@
 package java112.analyzer;
+
 import java.io.*;
 import java.util.*;
 import java.text.*;
-
+import java.net.URI;
 /**
  * The purpose of this class is to count each non-empty non-null token,
  * and then generate a file summary to output.
@@ -39,6 +40,7 @@ public class FileSummaryAnalyzer implements TokenAnalyzer {
      * This method writes the entire summary.txt text file by getting various
      * data from the input file.
      * @param inputFilePath this is the file to be read and analyzed
+     * @param outputFilePath this is where the summary.txt will be saved
      */
     @Override
     public void generateOutputFile(String inputFilePath,
@@ -47,6 +49,7 @@ public class FileSummaryAnalyzer implements TokenAnalyzer {
                 "EEE MMM dd HH:mm:ss z yyyy");
         Date date = new Date();
         File file = new File(inputFilePath);
+        URI fileUri = file.toURI();
         try (PrintWriter output = new PrintWriter(new BufferedWriter(
                 new FileWriter(outputFilePath)))) {
             output.println("Application: Token Checker Deluxe");
@@ -57,7 +60,7 @@ public class FileSummaryAnalyzer implements TokenAnalyzer {
             output.println("Last Modified: "
                     + sdf.format(file.lastModified()));
             output.println("File Size: " + file.length());
-            output.println("File URI: " + inputFilePath);
+            output.println("File URI: " + fileUri);
             output.println("Total Tokens: " + getTotalTokensCount());
         } catch(FileNotFoundException fne) {
             System.out.println("Could not find file");

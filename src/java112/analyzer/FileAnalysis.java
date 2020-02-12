@@ -1,7 +1,7 @@
 package java112.analyzer;
+
 import java.io.*;
 import java.util.*;
-
 /**
  * This is the main controller class for the project.
  * @author Kevin Leader
