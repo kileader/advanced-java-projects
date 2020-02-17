@@ -11,12 +11,6 @@ import java.net.URI;
 public class FileSummaryAnalyzer implements TokenAnalyzer {
     private int totalTokensCount;
     /**
-     * This method sets the initial value of totalTokensCount to 0.
-     */
-    public FileSummaryAnalyzer() { //Not necessary
-        totalTokensCount = 0;
-    }
-    /**
      * This method returns totalTokensCount.
      * @return returns the totatlTokensCount
      */
@@ -28,7 +22,7 @@ public class FileSummaryAnalyzer implements TokenAnalyzer {
      * @param token a token
      */
     @Override
-    public void processToken(String token) { //Check null first always then .isBlank()
+    public void processToken(String token) {
         if (token == null || token.isBlank()) {
             return;
         } else {
@@ -48,13 +42,14 @@ public class FileSummaryAnalyzer implements TokenAnalyzer {
                 "EEE MMM dd HH:mm:ss z yyyy");
         Date date = new Date();
         File file = new File(inputFilePath);
+        String path = file.getAbsolutePath();
         URI fileUri = file.toURI();
         try (PrintWriter output = new PrintWriter(new BufferedWriter(
                 new FileWriter(outputFilePath)))) {
             output.println("Application: Token Checker Deluxe");
             output.println("Author: Kevin Leader");
             output.println("Author Email: kleader@madisoncollege.edu");
-            output.println("File: " + inputFilePath);
+            output.println("File: " + path);
             output.println("Date of Analysis: " + sdf.format(date));
             output.println("Last Modified: "
                     + sdf.format(file.lastModified()));

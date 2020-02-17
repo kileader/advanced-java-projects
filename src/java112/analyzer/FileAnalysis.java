@@ -23,7 +23,7 @@ public class FileAnalysis {
             return;
         } else {
             createAnalyzerInstances();
-            readInputFile(arguments[0]);
+            openInputFile(arguments[0]);
             writeOutputFiles(arguments[0]);
         }
     }
@@ -37,16 +37,15 @@ public class FileAnalysis {
     }
     /**
      * This method opens the input file then loops through all the
-     * lines of the input file to generate individual tokens.
+     * lines of the input file.
      * @param inputFilePath command line argument for the location of input file
      */
-    public void readInputFile(String inputFilePath) {
+    public void openInputFile(String inputFilePath) {
         try (BufferedReader input = new BufferedReader(
                 new FileReader(inputFilePath))) {
             while(input.ready()) {
                 String inputLine = input.readLine();
-                String[] tokenArray = inputLine.split("\\W");
-                passGeneratedTokens(tokenArray);
+                formTokenArray(inputLine);
             }
         } catch(FileNotFoundException fne) {
             System.out.println("Could not find file");
@@ -55,6 +54,14 @@ public class FileAnalysis {
             System.out.println("Could not close input reader");
             ioe.printStackTrace();
         }
+    }
+    /**
+     * This method takes the line from the reader and forms an array of tokens.
+     * @param inputLine a string for a line from the input file
+     */
+    public void formTokenArray(String inputLine){
+        String[] tokenArray = inputLine.split("\\W");
+        passGeneratedTokens(tokenArray);
     }
     /**
      * This method passes generated tokens to all Analyzer instances.

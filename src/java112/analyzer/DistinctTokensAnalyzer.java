@@ -2,7 +2,6 @@ package java112.analyzer;
 import java.io.*;
 import java.util.*;
 import java.text.*;
-
 /**
  * This purpose of this class is to check for valid tokens, and then add them
  * to a SortedSet to check for and output distinct values.
@@ -10,10 +9,6 @@ import java.text.*;
  */
 public class DistinctTokensAnalyzer implements TokenAnalyzer {
     private SortedSet<String> distinctTokens = new TreeSet<>();
-    /**
-     * This is the constructor method.
-     */
-    public DistinctTokensAnalyzer() {}
     /**
      * This method returns the distinctTokens sorted set.
      * @return the sorted set of strings consisting of distinct tokens
