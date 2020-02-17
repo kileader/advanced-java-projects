@@ -1,5 +1,4 @@
 package java112.analyzer;
-
 import java.io.*;
 import java.util.*;
 import java.text.*;

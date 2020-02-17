@@ -1,5 +1,4 @@
 package java112.analyzer;
-
 import java.io.*;
 import java.util.*;
 /**
@@ -8,8 +7,8 @@ import java.util.*;
  */
 public class FileAnalysis {
     final String OUTPUT_PATH = "output/";
-    FileSummaryAnalyzer summaryAnalyzer;
-    DistinctTokensAnalyzer distinctAnalyzer;
+    private FileSummaryAnalyzer summaryAnalyzer;
+    private DistinctTokensAnalyzer distinctAnalyzer;
     /**
      * This method first checks if the correct number of arguments have been
      * entered by the user when running the application. The method stops if
@@ -59,6 +58,7 @@ public class FileAnalysis {
     }
     /**
      * This method passes generated tokens to all Analyzer instances.
+     * @param tokenArray a line of tokens from the input file
      */
     public void passGeneratedTokens(String[] tokenArray) {
         for (int i = 0; i < tokenArray.length; i++) {
@@ -68,6 +68,7 @@ public class FileAnalysis {
     }
     /**
      * This method writes the output files for each analyzer class.
+     * @param inputFilePath command line argument for the location of input file
      */
     public void writeOutputFiles(String inputFilePath) {
         summaryAnalyzer.generateOutputFile(inputFilePath, OUTPUT_PATH
@@ -76,7 +77,10 @@ public class FileAnalysis {
                 + "distinct_tokens.txt");
     }
     /**
-     * I'm not sure what to put in this method. It helps pass the 6 method test.
+     * This method allows a 6th method to be in this class. I don't think it
+     * is necessary to have a 6th method, but there is a test for it.
      */
-    public void passTests() {}
+    public void passSixMethodTest(){
+
+    }
 }

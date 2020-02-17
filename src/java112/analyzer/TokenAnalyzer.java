@@ -7,7 +7,7 @@ public interface TokenAnalyzer {
     /**
      * This is the general structure of the methods that will receive
      * and get info from individual tokens.
-     * @param token singular word
+     * @param token singular word taken from the input file
      */
     void processToken(String token);
     /**
