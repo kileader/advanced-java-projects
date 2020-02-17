@@ -28,7 +28,7 @@ public class DistinctTokensAnalyzer implements TokenAnalyzer {
      */
     @Override
     public void processToken(String token) {
-        if (token.isEmpty() || token == null || token == "\\s") {
+        if (token == null || token.isBlank()) {
             return;
         } else {
             distinctTokens.add(token);

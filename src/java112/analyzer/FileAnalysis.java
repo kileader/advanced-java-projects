@@ -6,7 +6,7 @@ import java.util.*;
  * @author Kevin Leader
  */
 public class FileAnalysis {
-    final String OUTPUT_PATH = "output/";
+    private static final String OUTPUT_PATH = "output/";
     private FileSummaryAnalyzer summaryAnalyzer;
     private DistinctTokensAnalyzer distinctAnalyzer;
     /**
@@ -75,12 +75,5 @@ public class FileAnalysis {
                 + "summary.txt");
         distinctAnalyzer.generateOutputFile(inputFilePath, OUTPUT_PATH
                 + "distinct_tokens.txt");
-    }
-    /**
-     * This method allows a 6th method to be in this class. I don't think it
-     * is necessary to have a 6th method, but there is a test for it.
-     */
-    public void passSixMethodTest(){
-
     }
 }

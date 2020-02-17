@@ -13,7 +13,7 @@ public class FileSummaryAnalyzer implements TokenAnalyzer {
     /**
      * This method sets the initial value of totalTokensCount to 0.
      */
-    public FileSummaryAnalyzer() {
+    public FileSummaryAnalyzer() { //Not necessary
         totalTokensCount = 0;
     }
     /**
@@ -28,8 +28,8 @@ public class FileSummaryAnalyzer implements TokenAnalyzer {
      * @param token a token
      */
     @Override
-    public void processToken(String token) {
-        if (token.isEmpty() || token == null || token == "\\s") {
+    public void processToken(String token) { //Check null first always then .isBlank()
+        if (token == null || token.isBlank()) {
             return;
         } else {
             totalTokensCount++;
