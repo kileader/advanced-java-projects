@@ -1,4 +1,5 @@
 package java112.analyzer;
+
 import java.io.*;
 import java.util.*;
 /**
@@ -12,13 +13,13 @@ public class FileAnalysis {
     /**
      * This method first checks if the correct number of arguments have been
      * entered by the user when running the application. The method stops if
-     * there is anything but one argument. If there is just one argument,
+     * there is anything but two arguments. If there is two arguments,
      * then it calls other methods to perform various tasks.
      * @param arguments arguments inputted to the command line
      */
     public void analyze(String[] arguments) {
-        if (arguments.length != 1) {
-            System.out.println("Please only input one argument"
+        if (arguments.length != 2) {
+            System.out.println("Please only input two arguments"
                     + "to the command line.");
             return;
         } else {
