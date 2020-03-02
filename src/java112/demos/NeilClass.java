@@ -14,7 +14,7 @@ import java.io.IOException;
  */
 public class NeilClass
 {
-    
+
     public static String GetInputString(final String tMessage) throws IOException
     {
         final BufferedReader tKeyboard =  new BufferedReader(new InputStreamReader(System.in));

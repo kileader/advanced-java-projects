@@ -1,4 +1,4 @@
-package java112.labs2;
+/*package java112.labs2;
 
 import java.util.*;
 import java.io.*;
@@ -14,3 +14,4 @@ public class LabSix {
 
     }
 }
+*/

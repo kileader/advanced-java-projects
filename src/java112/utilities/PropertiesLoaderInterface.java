@@ -8,7 +8,7 @@ import java.util.*;
  * Properties object is needed to be loaded.
  * @author Kevin Leader
  */
-public interface PropertiesLoader{
+public interface PropertiesLoaderInterface{
 
     /**
      * This default method will load a properties file into a Properties

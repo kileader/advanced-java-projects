@@ -26,6 +26,6 @@ public class LabThree {
             System.out.println("Problem: " + e);
             e.printStackTrace();
         }
-        System.out.println(properties.getProperty());
+        System.out.println(properties.getProperty("enable.sessions"));
     }
 }
