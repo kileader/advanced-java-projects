@@ -6,7 +6,7 @@ import java.util.*;
  * This is the main controller class for the project.
  * @author Kevin Leader
  */
-public class FileAnalysis {
+public class FileAnalysis implements PropertiesLoader {
     private static final String OUTPUT_PATH = "output/";
     private List tokenAnalyzerList;
     /**
@@ -22,9 +22,10 @@ public class FileAnalysis {
                     + "to the command line.");
             return;
         } else {
-            createAnalyzerInstances();
-            openInputFile(arguments[0]);
-            writeOutputFiles(arguments[0]);
+            PropertiesLoader.loadProperties(arguments[1]);
+            // createAnalyzerInstances();
+            // openInputFile(arguments[0]);
+            // writeOutputFiles(arguments[0]);
         }
     }
     /**

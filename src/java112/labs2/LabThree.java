@@ -19,6 +19,12 @@ public class LabThree {
         try {
             properties.load(this.getClass().getResourceAsStream(
                     propertiesFilePath));
+            System.out.println(properties);
+            Set<String> keys = properties.stringPropertyNames();
+            for(String key : keys) {
+                System.out.println("Key is: " + key + " value is: "
+                        + properties.getProperty(key));
+            }
         } catch(IOException ioe) {
             System.out.println("Can't load the properties file");
             ioe.printStackTrace();
@@ -26,6 +32,5 @@ public class LabThree {
             System.out.println("Problem: " + e);
             e.printStackTrace();
         }
-        System.out.println(properties.getProperty("enable.sessions"));
     }
 }
