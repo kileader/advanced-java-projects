@@ -8,8 +8,7 @@ import java.util.*;
  */
 public class FileAnalysis {
     private static final String OUTPUT_PATH = "output/";
-    private FileSummaryAnalyzer summaryAnalyzer;
-    private DistinctTokensAnalyzer distinctAnalyzer;
+    private List tokenAnalyzerList;
     /**
      * This method first checks if the correct number of arguments have been
      * entered by the user when running the application. The method stops if
