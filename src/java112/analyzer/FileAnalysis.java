@@ -8,7 +8,7 @@ import java.util.*;
  */
 public class FileAnalysis implements PropertiesLoader {
     private static final String OUTPUT_PATH = "output/";
-    private List tokenAnalyzerList;
+    private List analyzers;
     /**
      * This method first checks if the correct number of arguments have been
      * entered by the user when running the application. The method stops if
@@ -28,13 +28,9 @@ public class FileAnalysis implements PropertiesLoader {
             // writeOutputFiles(arguments[0]);
         }
     }
-    /**
-     * This method creates an instance of each analyzer class and assigns
-     * each instance to their respective instance variables.
-     */
+
     public void createAnalyzerInstances() {
-        summaryAnalyzer = new FileSummaryAnalyzer();
-        distinctAnalyzer = new DistinctTokensAnalyzer();
+        analyzers.add(new FileSummaryAnalyzer(properties));
     }
     /**
      * This method opens the input file then loops through all the
