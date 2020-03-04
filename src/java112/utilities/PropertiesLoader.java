@@ -5,7 +5,6 @@ import java.util.*;
 
 /**
  * @author Kevin Leader
- *
  */
 public interface PropertiesLoader{
 

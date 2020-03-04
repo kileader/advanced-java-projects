@@ -11,8 +11,7 @@ public class LabThree {
         l3.run(args[0]);
     }
     public void run(String arg) {
-        String propertiesFilePath = arg;
-        loadProperties(propertiesFilePath);
+        loadProperties(arg);
     }
     public void loadProperties(String propertiesFilePath)  {
         properties = new Properties();
