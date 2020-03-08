@@ -7,8 +7,9 @@ import java.util.*;
  * @author Kevin Leader
  */
 public class FileAnalysis implements PropertiesLoader {
-    private static final String OUTPUT_PATH = "output/";
+
     private List analyzers;
+
     /**
      * This method first checks if the correct number of arguments have been
      * entered by the user when running the application. The method stops if
@@ -18,18 +19,16 @@ public class FileAnalysis implements PropertiesLoader {
      */
     public void analyze(String[] arguments) {
         if (arguments.length != 2) {
-            System.out.println("Please only input two arguments"
+            System.out.println("Please only input two arguments "
                     + "to the command line.");
             return;
         } else {
-            PropertiesLoader.loadProperties(arguments[1]);
-            // createAnalyzerInstances();
-            // openInputFile(arguments[0]);
-            // writeOutputFiles(arguments[0]);
+            createAnalyzerInstances(loadProperties(arguments[1]));
         }
     }
 
-    public void createAnalyzerInstances() {
+    public void createAnalyzerInstances(String properties) {
+        analyzers = new ArrayList<TokenAnalyzer>();
         analyzers.add(new FileSummaryAnalyzer(properties));
     }
     /**

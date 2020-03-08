@@ -11,6 +11,12 @@ import java.net.URI;
 public class FileSummaryAnalyzer implements TokenAnalyzer {
     private int totalTokensCount;
     /**
+     * Empty constructor
+     */
+    public FileSummaryAnalyzer() {
+
+    }
+    /**
      * This method returns totalTokensCount.
      * @return returns the totatlTokensCount
      */

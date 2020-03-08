@@ -1,4 +1,5 @@
 package java112.analyzer;
+
 import java.io.*;
 import java.util.*;
 import java.text.*;
@@ -9,6 +10,19 @@ import java.text.*;
  */
 public class DistinctTokensAnalyzer implements TokenAnalyzer {
     private SortedSet<String> distinctTokens = new TreeSet<>();
+    /**
+     * Empty constructor
+     */
+    public DistinctTokensAnalyzer() {
+
+    }
+    /**
+     * Constructor with properties
+     * @param properties [description]
+     */
+    public DistinctTokensAnalyzer(Properties properties) {
+
+    }
     /**
      * This method returns the distinctTokens sorted set.
      * @return the sorted set of strings consisting of distinct tokens
