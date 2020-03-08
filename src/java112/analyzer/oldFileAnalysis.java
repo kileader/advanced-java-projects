@@ -5,34 +5,35 @@ import java.util.*;
  * This is the main controller class for the project.
  * @author Kevin Leader
  */
-public class FileAnalysis implements PropertiesLoader {
-    private List analyzers;
+public class FileAnalysis {
+    private static final String OUTPUT_PATH = "output/";
+    private FileSummaryAnalyzer summaryAnalyzer;
+    private DistinctTokensAnalyzer distinctAnalyzer;
     /**
      * This method first checks if the correct number of arguments have been
      * entered by the user when running the application. The method stops if
-     * there is anything but two arguments. If there is two arguments,
+     * there is anything but one argument. If there is just one argument,
      * then it calls other methods to perform various tasks.
      * @param arguments arguments inputted to the command line
      */
     public void analyze(String[] arguments) {
-        if (arguments.length != 2) {
-            System.out.println("Please only input two arguments "
+        if (arguments.length != 1) {
+            System.out.println("Please only input one argument"
                     + "to the command line.");
             return;
         } else {
-            createAnalyzerList(loadProperties(arguments[1]));
+            createAnalyzerInstances();
             openInputFile(arguments[0]);
-            writeOutputFIles(arguments[0]);
+            writeOutputFiles(arguments[0]);
         }
     }
     /**
-     * This method instanciates the list of TokenAnalyzer classes.
-     * @param properties This is the file path to the analyzer properties.
+     * This method creates an instance of each analyzer class and assigns
+     * each instance to their respective instance variables.
      */
-    public void createAnalyzerList(Properties properties) {
-        analyzers = new ArrayList<TokenAnalyzer>();
-        analyzers.add(new FileSummaryAnalyzer(properties));
-        analyzers.add(new DistinctTokensAnalyzer(properties));
+    public void createAnalyzerInstances() {
+        summaryAnalyzer = new FileSummaryAnalyzer();
+        distinctAnalyzer = new DistinctTokensAnalyzer();
     }
     /**
      * This method opens the input file then loops through all the
@@ -66,11 +67,10 @@ public class FileAnalysis implements PropertiesLoader {
      * This method passes generated tokens to all Analyzer instances.
      * @param tokenArray a line of tokens from the input file
      */
-    public void passGeneratedTokens(String[] tokens) {
-        for (String token : tokens) {
-            for (TokenAnalyzer analyzer : analyzers) {
-                analyzer.processToken(token);
-            }
+    public void passGeneratedTokens(String[] tokenArray) {
+        for (int i = 0; i < tokenArray.length; i++) {
+            summaryAnalyzer.processToken(tokenArray[i]);
+            distinctAnalyzer.processToken(tokenArray[i]);
         }
     }
     /**
@@ -78,8 +78,9 @@ public class FileAnalysis implements PropertiesLoader {
      * @param inputFilePath command line argument for the location of input file
      */
     public void writeOutputFiles(String inputFilePath) {
-        for (TokenAnalyzer analyzer : analyzers) {
-            analyzer.generateOutputFile(inputFilePath);
-        }
+        summaryAnalyzer.generateOutputFile(inputFilePath, OUTPUT_PATH
+                + "summary.txt");
+        distinctAnalyzer.generateOutputFile(inputFilePath, OUTPUT_PATH
+                + "distinct_tokens.txt");
     }
 }
