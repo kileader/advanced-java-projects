@@ -1,5 +1,4 @@
 package java112.analyzer;
-
 import java.io.*;
 import java.util.*;
 import java.text.*;
@@ -10,6 +9,7 @@ import java.text.*;
  */
 public class DistinctTokensAnalyzer implements TokenAnalyzer {
     private SortedSet<String> distinctTokens = new TreeSet<>();
+    private Properties properties;
     /**
      * Empty constructor
      */
@@ -17,11 +17,12 @@ public class DistinctTokensAnalyzer implements TokenAnalyzer {
 
     }
     /**
-     * Constructor with properties
-     * @param properties [description]
+     * Constructor with one Properties parameter
+     * @param properties properties to be used for the output
      */
     public DistinctTokensAnalyzer(Properties properties) {
-
+        this();
+        this.properties = properties;
     }
     /**
      * This method returns the distinctTokens sorted set.
@@ -49,8 +50,7 @@ public class DistinctTokensAnalyzer implements TokenAnalyzer {
      * @param outputFilePath The location the distinct tokens output file
      */
     @Override
-    public void generateOutputFile(String inputFilePath,
-            String outputFilePath){
+    public void generateOutputFile(String inputFilePath){
         try (PrintWriter output = new PrintWriter(new BufferedWriter(
                 new FileWriter(outputFilePath)))) {
             for (String token : distinctTokens) {

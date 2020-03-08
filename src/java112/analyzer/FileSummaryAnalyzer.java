@@ -10,6 +10,7 @@ import java.net.URI;
  */
 public class FileSummaryAnalyzer implements TokenAnalyzer {
     private int totalTokensCount;
+    private Properties properties;
     /**
      * Empty constructor
      */
@@ -17,8 +18,16 @@ public class FileSummaryAnalyzer implements TokenAnalyzer {
 
     }
     /**
+     * Constructor with one Properties parameter
+     * @param properties properties to be used for the output
+     */
+    public FileSummaryAnalyzer(Properties properties) {
+        this();
+        this.properties = properties;
+    }
+    /**
      * This method returns totalTokensCount.
-     * @return returns the totatlTokensCount
+     * @return returns the totalTokensCount
      */
     public int getTotalTokensCount() {
         return totalTokensCount;
@@ -42,8 +51,7 @@ public class FileSummaryAnalyzer implements TokenAnalyzer {
      * @param outputFilePath this is where the summary.txt will be saved
      */
     @Override
-    public void generateOutputFile(String inputFilePath,
-            String outputFilePath) {
+    public void generateOutputFile(String inputFilePath) {
         SimpleDateFormat sdf = new SimpleDateFormat(
                 "EEE MMM dd HH:mm:ss z yyyy");
         Date date = new Date();
