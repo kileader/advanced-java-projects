@@ -21,9 +21,8 @@ public class FileSummaryAnalyzer implements TokenAnalyzer {
      * Constructor with one Properties parameter
      * @param properties properties to be used for the output
      */
-    public FileSummaryAnalyzer(Properties properties) {
-        this();
-        this.properties = properties;
+    public FileSummaryAnalyzer(Properties inProperties) {
+        properties = inProperties;
     }
     /**
      * This method returns totalTokensCount.
@@ -48,7 +47,6 @@ public class FileSummaryAnalyzer implements TokenAnalyzer {
      * This method writes the entire summary.txt text file by getting various
      * data from the input file.
      * @param inputFilePath this is the file to be read and analyzed
-     * @param outputFilePath this is where the summary.txt will be saved
      */
     @Override
     public void generateOutputFile(String inputFilePath) {
@@ -59,10 +57,13 @@ public class FileSummaryAnalyzer implements TokenAnalyzer {
         String path = file.getAbsolutePath();
         URI fileUri = file.toURI();
         try (PrintWriter output = new PrintWriter(new BufferedWriter(
-                new FileWriter(outputFilePath)))) {
-            output.println("Application: Token Checker Deluxe");
-            output.println("Author: Kevin Leader");
-            output.println("Author Email: kleader@madisoncollege.edu");
+                new FileWriter(properties.getProperty("output.directory")
+                + properties.getProperty("output.file.summary"))))) {
+            output.println("Application: "
+                    + properties.getProperty("application.name"));
+            output.println("Author: " + properties.getProperty("author");
+            output.println("Author Email: "
+                    + properties.getProperty("author.email.address"));
             output.println("File: " + path);
             output.println("Date of Analysis: " + sdf.format(date));
             output.println("Last Modified: "
@@ -78,5 +79,4 @@ public class FileSummaryAnalyzer implements TokenAnalyzer {
             ioe.printStackTrace();
         }
     }
-
 }
