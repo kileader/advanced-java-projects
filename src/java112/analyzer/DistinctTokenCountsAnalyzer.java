@@ -10,8 +10,7 @@ import java.util.*;
 public class DistinctTokenCountsAnalyzer implements TokenAnalyzer {
 
     private Properties properties;
-    private Map<String, Integer> distinctTokenCounts =
-            new HashMap<String, Integer>();
+    private Map<String, Integer> distinctTokenCounts;
 
     /**
      * Empty constructor
@@ -27,6 +26,7 @@ public class DistinctTokenCountsAnalyzer implements TokenAnalyzer {
     public DistinctTokenCountsAnalyzer(Properties properties) {
         this();
         this.properties = properties;
+        distinctTokenCounts = new TreeMap<String, Integer>();
     }
 
     /**
@@ -61,11 +61,12 @@ public class DistinctTokenCountsAnalyzer implements TokenAnalyzer {
         try (PrintWriter output = new PrintWriter(new BufferedWriter(
                 new FileWriter(properties.getProperty("output.directory")
                 + properties.getProperty("output.file.distinct.counts"))))) {
-            Set<Map.Entry<String, Integer>> entries =
-                    distinctTokenCounts.entrySet();
-            for (Map.Entry<String, Integer> entry : entries) {
-                output.println(entry);
-            }
+            for (Map.Entry<String, Integer> entry :
+                    distinctTokenCounts.entrySet()) {
+        		String k = entry.getKey();
+        		Integer v = entry.getValue();
+        		output.println(k + "\t" + v);
+        	}
         } catch(FileNotFoundException fne) {
             System.out.println("Could not find file");
             fne.printStackTrace();
