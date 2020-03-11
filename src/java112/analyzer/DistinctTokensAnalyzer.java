@@ -11,7 +11,7 @@ import java.text.*;
  */
 public class DistinctTokensAnalyzer implements TokenAnalyzer {
 
-    private SortedSet<String> distinctTokens = new TreeSet<>();
+    private SortedSet<String> distinctTokens;
     private Properties properties;
 
     /**
@@ -28,6 +28,7 @@ public class DistinctTokensAnalyzer implements TokenAnalyzer {
     public DistinctTokensAnalyzer(Properties properties) {
         this();
         this.properties = properties;
+        distinctTokens = new TreeSet<>();
     }
 
     /**

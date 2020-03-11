@@ -12,7 +12,7 @@ import java.lang.*;
 public class LargestTokensAnalyzer implements TokenAnalyzer {
 
     private Properties properties;
-    private SortedSet<String> largestTokens = new TreeSet<>();
+    private SortedSet<String> largestTokens;
     private int minimumTokenLength;
 
     /**
@@ -29,6 +29,7 @@ public class LargestTokensAnalyzer implements TokenAnalyzer {
     public LargestTokensAnalyzer(Properties properties) {
         this();
         this.properties = properties;
+        largestTokens = new TreeSet<>();
         minimumTokenLength = Integer.parseInt(properties.getProperty(
                 "largest.words.minimum.length"));
     }
