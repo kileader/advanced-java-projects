@@ -10,7 +10,8 @@ import java.util.*;
 public class DistinctTokenCountsAnalyzer implements TokenAnalyzer {
 
     private Properties properties;
-    private Map<String, Integer> distinctTokenCounts;
+    private Map<String, Integer> distinctTokenCounts =
+            new HashMap<String, Integer>();
 
     /**
      * Empty constructor
