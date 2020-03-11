@@ -61,7 +61,7 @@ public class FileSummaryAnalyzer implements TokenAnalyzer {
                 + properties.getProperty("output.file.summary"))))) {
             output.println("Application: "
                     + properties.getProperty("application.name"));
-            output.println("Author: " + properties.getProperty("author");
+            output.println("Author: " + properties.getProperty("author"));
             output.println("Author Email: "
                     + properties.getProperty("author.email.address"));
             output.println("File: " + path);

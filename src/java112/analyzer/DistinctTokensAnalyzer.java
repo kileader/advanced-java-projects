@@ -13,14 +13,14 @@ public class DistinctTokensAnalyzer implements TokenAnalyzer {
     /**
      * Empty constructor
      */
-    public DistinctTokensAnalyzer() {
+    public void DistinctTokensAnalyzer() {
 
     }
     /**
      * Constructor with one Properties parameter
      * @param properties properties to be used for the output
      */
-    public DistinctTokensAnalyzer(Properties properties) {
+    public void DistinctTokensAnalyzer(Properties properties) {
         this();
         this.properties = properties;
     }

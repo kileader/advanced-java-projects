@@ -15,7 +15,7 @@ public class DistinctTokensCountsAnalyzer implements TokenAnalyzer {
     /**
      * Empty constructor
      */
-    public DistinctTokensAnalyzer() {
+    public void DistinctTokensCountsAnalyzer() {
 
     }
 
@@ -23,7 +23,7 @@ public class DistinctTokensCountsAnalyzer implements TokenAnalyzer {
      * Constructor with one Properties parameter
      * @param properties properties to be used for the output
      */
-    public DistinctTokensAnalyzer(Properties inproperties) {
+    public void DistinctTokensAnalyzer(Properties inproperties) {
         properties = properties;
     }
 
@@ -61,7 +61,6 @@ public class DistinctTokensCountsAnalyzer implements TokenAnalyzer {
         try (PrintWriter output = new PrintWriter(new BufferedWriter(
                 new FileWriter(properties.getProperty("output.directory")
                 + properties.getProperty("output.file.distinct.counts"))))) {
-            for ()
         } catch(FileNotFoundException fne) {
             System.out.println("Could not find file");
             fne.printStackTrace();

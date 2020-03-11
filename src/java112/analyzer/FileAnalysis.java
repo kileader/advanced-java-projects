@@ -1,12 +1,16 @@
 package java112.analyzer;
+
 import java.io.*;
 import java.util.*;
+
 /**
  * This is the main controller class for the project.
  * @author Kevin Leader
  */
 public class FileAnalysis implements PropertiesLoader {
+
     private List analyzers;
+
     /**
      * This method first checks if the correct number of arguments have been
      * entered by the user when running the application. The method stops if
@@ -25,15 +29,19 @@ public class FileAnalysis implements PropertiesLoader {
             writeOutputFIles(arguments[0]);
         }
     }
+
     /**
      * This method instanciates the list of TokenAnalyzer classes.
-     * @param properties This is the file path to the analyzer properties.
+     * @param properties These are the properties for the analyzer.
      */
     public void createAnalyzerList(Properties properties) {
         analyzers = new ArrayList<TokenAnalyzer>();
         analyzers.add(new FileSummaryAnalyzer(properties));
         analyzers.add(new DistinctTokensAnalyzer(properties));
+        analyzers.add(new LargestTokensAnalyzer(properties));
+        analyzers.add(new DistinctTokenCountsAnalyzer(properties));
     }
+
     /**
      * This method opens the input file then loops through all the
      * lines of the input file.
