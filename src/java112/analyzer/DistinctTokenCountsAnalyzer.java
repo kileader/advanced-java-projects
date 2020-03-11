@@ -15,7 +15,7 @@ public class DistinctTokenCountsAnalyzer implements TokenAnalyzer {
     /**
      * Empty constructor
      */
-    public void DistinctTokenCountsAnalyzer() {
+    public DistinctTokenCountsAnalyzer() {
 
     }
 
@@ -23,8 +23,9 @@ public class DistinctTokenCountsAnalyzer implements TokenAnalyzer {
      * Constructor with one Properties parameter
      * @param properties properties to be used for the output
      */
-    public void DistinctTokenCountsAnalyzer(Properties inProperties) {
-        properties = inProperties;
+    public DistinctTokenCountsAnalyzer(Properties properties) {
+        this();
+        this.properties = properties;
     }
 
     /**
@@ -35,11 +36,11 @@ public class DistinctTokenCountsAnalyzer implements TokenAnalyzer {
     public void processToken(String token) {
         if (token == null || token.isBlank()) {
             return;
-        } else if (distinctTokensCounts.containsKey(token)) {
-            distinctTokensCounts.replace(token,
-            distinctTokensCounts.get(token) + 1);
+        } else if (distinctTokenCounts.containsKey(token)) {
+            distinctTokenCounts.replace(token,
+                    distinctTokenCounts.get(token) + 1);
         } else {
-            distinctTokensCounts.put(token, 1);
+            distinctTokenCounts.put(token, 1);
         }
     }
 
@@ -59,8 +60,10 @@ public class DistinctTokenCountsAnalyzer implements TokenAnalyzer {
         try (PrintWriter output = new PrintWriter(new BufferedWriter(
                 new FileWriter(properties.getProperty("output.directory")
                 + properties.getProperty("output.file.distinct.counts"))))) {
-            for (String token : distinctTokenCounts) {
-                output.println(token);
+            Set<Map.Entry<String, Integer>> entries =
+                    distinctTokenCounts.entrySet();
+            for (Map.Entry<String, Integer> entry : entries) {
+                output.println(entry);
             }
         } catch(FileNotFoundException fne) {
             System.out.println("Could not find file");

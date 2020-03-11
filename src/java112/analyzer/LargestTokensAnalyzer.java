@@ -2,6 +2,7 @@ package java112.analyzer;
 
 import java.io.*;
 import java.util.*;
+import java.lang.*;
 
 /**
  * The purpose of this class is to find tokens larger than the specified minimum
@@ -17,7 +18,7 @@ public class LargestTokensAnalyzer implements TokenAnalyzer {
     /**
      * Empty constructor
      */
-    public void LargestTokenAnalyzer() {
+    public LargestTokensAnalyzer() {
 
     }
 
@@ -25,10 +26,11 @@ public class LargestTokensAnalyzer implements TokenAnalyzer {
      * Constructor with one Properties parameter
      * @param properties properties to be used for the output
      */
-    public void LargestTokenAnalyzer(Properties inProperties) {
-        properties = inProperties;
-        minimumTokenLength = properties.getProperty(
-                "largest.words.minimum.length");
+    public LargestTokensAnalyzer(Properties properties) {
+        this();
+        this.properties = properties;
+        minimumTokenLength = Integer.parseInt(properties.getProperty(
+                "largest.words.minimum.length"));
     }
 
     /**

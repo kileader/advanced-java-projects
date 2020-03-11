@@ -17,7 +17,7 @@ public class DistinctTokensAnalyzer implements TokenAnalyzer {
     /**
      * Empty constructor
      */
-    public void DistinctTokensAnalyzer() {
+    public DistinctTokensAnalyzer() {
 
     }
 
@@ -25,8 +25,9 @@ public class DistinctTokensAnalyzer implements TokenAnalyzer {
      * Constructor with one Properties parameter
      * @param properties properties to be used for the output
      */
-    public void DistinctTokensAnalyzer(Properties inProperties) {
-        properties = inProperties;
+    public DistinctTokensAnalyzer(Properties properties) {
+        this();
+        this.properties = properties;
     }
 
     /**

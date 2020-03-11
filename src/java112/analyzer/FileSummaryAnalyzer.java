@@ -18,7 +18,7 @@ public class FileSummaryAnalyzer implements TokenAnalyzer {
     /**
      * Empty constructor
      */
-    public void FileSummaryAnalyzer() {
+    public FileSummaryAnalyzer() {
 
     }
 
@@ -26,8 +26,9 @@ public class FileSummaryAnalyzer implements TokenAnalyzer {
      * Constructor with one Properties parameter
      * @param properties properties to be used for the output
      */
-    public void FileSummaryAnalyzer(Properties inProperties) {
-        properties = inProperties;
+    public FileSummaryAnalyzer(Properties properties) {
+        this();
+        this.properties = properties;
     }
 
     /**

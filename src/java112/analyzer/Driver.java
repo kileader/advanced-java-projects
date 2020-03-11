@@ -9,8 +9,13 @@ public class Driver {
      * The main method.
      * @param args command line arguments (the input file path)
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         FileAnalysis fa = new FileAnalysis();
-        fa.analyze(args);
+        try {
+            fa.analyze(args);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            throw exception;
+        }
     }
 }

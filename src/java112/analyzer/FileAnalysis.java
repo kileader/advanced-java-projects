@@ -2,6 +2,7 @@ package java112.analyzer;
 
 import java.io.*;
 import java.util.*;
+import java112.utilities.*;
 
 /**
  * This is the main controller class for the project. It reads a text file
@@ -10,7 +11,7 @@ import java.util.*;
  */
 public class FileAnalysis implements PropertiesLoader {
 
-    private List analyzers;
+    private List<TokenAnalyzer> analyzers;
 
     /**
      * This method first checks if the correct number of arguments have been
@@ -19,15 +20,20 @@ public class FileAnalysis implements PropertiesLoader {
      * then it calls other methods to perform various tasks.
      * @param arguments arguments inputted to the command line
      */
-    public void analyze(String[] arguments) {
+    public void analyze(String[] arguments) throws Exception {
         if (arguments.length != 2) {
             System.out.println("Please only input two arguments "
                     + "to the command line.");
             return;
         } else {
-            createAnalyzerList(loadProperties(arguments[1]));
+            try {
+                createAnalyzerList(loadProperties(arguments[1]));
+            } catch (Exception exception) {
+                exception.printStackTrace();
+                throw exception;
+            }
             openInputFile(arguments[0]);
-            writeOutputFIles(arguments[0]);
+            writeOutputFiles(arguments[0]);
         }
     }
 
