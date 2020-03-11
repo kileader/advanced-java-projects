@@ -1,29 +1,35 @@
 package java112.analyzer;
+
 import java.io.*;
 import java.util.*;
 import java.text.*;
 import java.net.URI;
+
 /**
  * The purpose of this class is to count each non-empty non-null token,
  * and then generate a file summary to output.
  * @author Kevin Leader
  */
 public class FileSummaryAnalyzer implements TokenAnalyzer {
+
     private int totalTokensCount;
     private Properties properties;
+
     /**
      * Empty constructor
      */
-    public FileSummaryAnalyzer() {
+    public void FileSummaryAnalyzer() {
 
     }
+
     /**
      * Constructor with one Properties parameter
      * @param properties properties to be used for the output
      */
-    public FileSummaryAnalyzer(Properties inProperties) {
+    public void FileSummaryAnalyzer(Properties inProperties) {
         properties = inProperties;
     }
+
     /**
      * This method returns totalTokensCount.
      * @return returns the totalTokensCount
@@ -31,11 +37,11 @@ public class FileSummaryAnalyzer implements TokenAnalyzer {
     public int getTotalTokensCount() {
         return totalTokensCount;
     }
+
     /**
      * This method counts each word token by adding 1 to totalTokensCount.
      * @param token a token
      */
-    @Override
     public void processToken(String token) {
         if (token == null || token.isBlank()) {
             return;
@@ -43,12 +49,12 @@ public class FileSummaryAnalyzer implements TokenAnalyzer {
             totalTokensCount++;
         }
     }
+
     /**
      * This method writes the entire summary.txt text file by getting various
      * data from the input file.
      * @param inputFilePath this is the file to be read and analyzed
      */
-    @Override
     public void generateOutputFile(String inputFilePath) {
         SimpleDateFormat sdf = new SimpleDateFormat(
                 "EEE MMM dd HH:mm:ss z yyyy");

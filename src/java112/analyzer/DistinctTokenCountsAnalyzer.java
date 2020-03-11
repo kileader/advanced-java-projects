@@ -7,7 +7,7 @@ import java.util.*;
  * This purpose of this class is to
  * @author Kevin Leader
  */
-public class DistinctTokensCountsAnalyzer implements TokenAnalyzer {
+public class DistinctTokenCountsAnalyzer implements TokenAnalyzer {
 
     private Properties properties;
     private Map<String, Integer> distinctTokenCounts;
@@ -15,7 +15,7 @@ public class DistinctTokensCountsAnalyzer implements TokenAnalyzer {
     /**
      * Empty constructor
      */
-    public void DistinctTokensCountsAnalyzer() {
+    public void DistinctTokenCountsAnalyzer() {
 
     }
 
@@ -23,8 +23,8 @@ public class DistinctTokensCountsAnalyzer implements TokenAnalyzer {
      * Constructor with one Properties parameter
      * @param properties properties to be used for the output
      */
-    public void DistinctTokensAnalyzer(Properties inproperties) {
-        properties = properties;
+    public void DistinctTokenCountsAnalyzer(Properties inProperties) {
+        properties = inProperties;
     }
 
     /**
@@ -32,7 +32,6 @@ public class DistinctTokensCountsAnalyzer implements TokenAnalyzer {
      * to the distinctTokenCounts map appropriately
      * @param token a token taken from the distinctTokens set
      */
-    @Override
     public void processToken(String token) {
         if (token == null || token.isBlank()) {
             return;
@@ -56,11 +55,13 @@ public class DistinctTokensCountsAnalyzer implements TokenAnalyzer {
      * This method generates a text document of distinct tokens and their counts
      * @param inputFilePath  The command line location of the input file
      */
-    @Override
     public void generateOutputFile(String inputFilePath){
         try (PrintWriter output = new PrintWriter(new BufferedWriter(
                 new FileWriter(properties.getProperty("output.directory")
                 + properties.getProperty("output.file.distinct.counts"))))) {
+            for (String token : distinctTokenCounts) {
+                output.println(token);
+            }
         } catch(FileNotFoundException fne) {
             System.out.println("Could not find file");
             fne.printStackTrace();

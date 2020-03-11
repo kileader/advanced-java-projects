@@ -4,7 +4,8 @@ import java.io.*;
 import java.util.*;
 
 /**
- * This is the main controller class for the project.
+ * This is the main controller class for the project. It reads a text file
+ * does an analysis on the words within the file.
  * @author Kevin Leader
  */
 public class FileAnalysis implements PropertiesLoader {
@@ -31,11 +32,14 @@ public class FileAnalysis implements PropertiesLoader {
     }
 
     /**
-     * This method instanciates the list of TokenAnalyzer classes.
+     * This method instanciates a list of token analyzers and passes the
+     * analyzer properties to each.
      * @param properties These are the properties for the analyzer.
      */
     public void createAnalyzerList(Properties properties) {
+
         analyzers = new ArrayList<TokenAnalyzer>();
+
         analyzers.add(new FileSummaryAnalyzer(properties));
         analyzers.add(new DistinctTokensAnalyzer(properties));
         analyzers.add(new LargestTokensAnalyzer(properties));
@@ -62,6 +66,7 @@ public class FileAnalysis implements PropertiesLoader {
             ioe.printStackTrace();
         }
     }
+
     /**
      * This method takes the line from the reader and forms an array of tokens.
      * @param inputLine a string for a line from the input file
@@ -70,6 +75,7 @@ public class FileAnalysis implements PropertiesLoader {
         String[] tokenArray = inputLine.split("\\W");
         passGeneratedTokens(tokenArray);
     }
+
     /**
      * This method passes generated tokens to all Analyzer instances.
      * @param tokenArray a line of tokens from the input file
@@ -81,6 +87,7 @@ public class FileAnalysis implements PropertiesLoader {
             }
         }
     }
+
     /**
      * This method writes the output files for each analyzer class.
      * @param inputFilePath command line argument for the location of input file

@@ -8,7 +8,7 @@ import java.util.*;
  * length and add them to a set
  * @author Kevin Leader
  */
-public class LargestTokenAnalyzer implements TokenAnalyzer {
+public class LargestTokensAnalyzer implements TokenAnalyzer {
 
     private Properties properties;
     private Set<String> largestTokens;
@@ -17,7 +17,7 @@ public class LargestTokenAnalyzer implements TokenAnalyzer {
     /**
      * Empty constructor
      */
-    public LargestTokenAnalyzer() {
+    public void LargestTokenAnalyzer() {
 
     }
 
@@ -25,7 +25,7 @@ public class LargestTokenAnalyzer implements TokenAnalyzer {
      * Constructor with one Properties parameter
      * @param properties properties to be used for the output
      */
-    public LargestTokenAnalyzer(Properties inProperties) {
+    public void LargestTokenAnalyzer(Properties inProperties) {
         properties = inProperties;
         minimumTokenLength = properties.getProperty(
                 "largest.words.minimum.length");
@@ -36,7 +36,6 @@ public class LargestTokenAnalyzer implements TokenAnalyzer {
      * then adds valid tokens to the largestTokens string set.
      * @param token a token
      */
-    @Override
     public void processToken(String token) {
         if (token.length() >= minimumTokenLength) {
             largestTokens.add(token);
@@ -51,4 +50,23 @@ public class LargestTokenAnalyzer implements TokenAnalyzer {
         return largestTokens;
     }
 
+    /**
+     * This method generates a text document of the largest distinct tokens.
+     * @param inputFilePath  The command line location of the input file
+     */
+    public void generateOutputFile(String inputFilePath){
+        try (PrintWriter output = new PrintWriter(new BufferedWriter(
+                new FileWriter(properties.getProperty("output.directory")
+                + properties.getProperty("output.file.largest.words"))))) {
+            for (String token : largestTokens) {
+                output.println(token);
+            }
+        } catch(FileNotFoundException fne) {
+            System.out.println("Could not find file");
+            fne.printStackTrace();
+        } catch(IOException ioe) {
+            System.out.println("Could not close output writer");
+            ioe.printStackTrace();
+        }
+    }
 }
