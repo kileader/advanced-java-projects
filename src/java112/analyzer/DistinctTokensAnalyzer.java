@@ -55,7 +55,6 @@ public class DistinctTokensAnalyzer implements TokenAnalyzer {
     /**
      * This method generates a text document of distinct tokens.
      * @param inputFilePath  The command line location of the input file
-     * @param outputFilePath The location the distinct tokens output file
      */
     public void generateOutputFile(String inputFilePath){
         try (PrintWriter output = new PrintWriter(new BufferedWriter(

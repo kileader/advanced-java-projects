@@ -51,6 +51,11 @@
                 First Servlet
               </a>
             </li>
+            <li>
+              <a href="/java112/project2PropertiesServlet" class="menu_link">
+                Properties Servlet
+              </a>
+            </li>
           </ul>
         </div>
         <div id="clear"></div>

@@ -4,7 +4,8 @@ import java.io.*;
 import java.util.*;
 
 /**
- * This purpose of this class is to
+ * This purpose of this class is to create a text file of distinct tokens with
+ * counts of how many times each token appears.
  * @author Kevin Leader
  */
 public class DistinctTokenCountsAnalyzer implements TokenAnalyzer {

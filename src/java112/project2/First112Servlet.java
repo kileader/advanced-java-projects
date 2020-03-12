@@ -27,7 +27,7 @@ public class First112Servlet extends HttpServlet {
         out.print("<BODY>");
         out.print("<h1>First Servlet</h1>");
         out.print("<h2>Kevin Leader - Advanced Java Programming 112</h2>");
-        out.print("<img src=\"images/freeCodeCamp.png\"");
+        out.print("<img src=\"images/freeCodeCamp.png\">");
         out.print("<br />");
         out.print("<a href=\"/java112\">Homepage</a>");
         out.print("</BODY>");

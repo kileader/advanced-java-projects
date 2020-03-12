@@ -84,7 +84,7 @@ public class FileAnalysis implements PropertiesLoader {
 
     /**
      * This method passes generated tokens to all Analyzer instances.
-     * @param tokenArray a line of tokens from the input file
+     * @param tokens a line of tokens from the input file
      */
     public void passGeneratedTokens(String[] tokens) {
         for (String token : tokens) {
