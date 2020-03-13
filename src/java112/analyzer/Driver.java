@@ -1,4 +1,5 @@
 package java112.analyzer;
+
 /**
  * This class instantiates an instance of the project's main processing class.
  * Then it runs an analysis for the given args (the input file path).
