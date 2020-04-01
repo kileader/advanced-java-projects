@@ -68,7 +68,12 @@
                             Lab 1
                         </a>
                     </li>
-                </li>
+                    <li>
+                        <a href="/java112/Lab32Servlet" class="menu_link">
+                            Lab 2
+                        </a>
+                    </li>
+                </ul>
             </div>
             <div id="clear"></div>
         </div>

@@ -17,7 +17,6 @@ public class DistinctTokenCountsAnalyzer implements TokenAnalyzer {
      * Empty constructor
      */
     public DistinctTokenCountsAnalyzer() {
-
     }
 
     /**
