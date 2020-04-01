@@ -53,8 +53,7 @@
                     </a>
                     </li>
                     <li>
-                        <a href="/java112/project2PropertiesServlet"
-                                class="menu_link">
+                        <a href="/java112/project2PropertiesServlet" class="menu_link">
                             Properties Servlet
                         </a>
                     </li>
@@ -71,6 +70,11 @@
                     <li>
                         <a href="/java112/Lab32Servlet" class="menu_link">
                             Lab 2
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/java112/Lab33Servlet" class="menu_link">
+                            Lab 3
                         </a>
                     </li>
                 </ul>
