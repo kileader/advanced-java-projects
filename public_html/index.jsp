@@ -77,6 +77,11 @@
                             Lab 3
                         </a>
                     </li>
+                    <li>
+                        <a href="/java112/beanOneDemo" class="menu_link">
+                            Lab 4
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div id="clear"></div>
