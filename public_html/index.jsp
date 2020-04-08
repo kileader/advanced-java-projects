@@ -78,7 +78,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/java112/beanOneDemo" class="menu_link">
+                        <a href="/java112/mvc-demo" class="menu_link">
                             Lab 4
                         </a>
                     </li>
