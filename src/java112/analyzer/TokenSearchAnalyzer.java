@@ -28,6 +28,7 @@ public class TokenSearchAnalyzer implements TokenAnalyzer {
     public TokenSearchAnalyzer(Properties properties) {
         this();
         this.properties = properties;
+        foundLocations = new HashMap<String, List<Integer>>();
     }
 
     /**
@@ -35,7 +36,23 @@ public class TokenSearchAnalyzer implements TokenAnalyzer {
      * @param token a token
      */
     public void processToken(String token) {
+        if (token == null || token.isBlank()) {
+            return;
+        } else {
+            try (InputStream inputStream = this.getClass().getResourceAsStream(
+                    properties.getProperty("classpath.search.tokens"));
+                 InputStreamReader inputStreamReader =
+                         new InputStreamReader(inputStream);
+                 BufferedReader searchTokensReader =
+                         new BufferedReader(inputStreamReader)) {
+                readSearchTokens(searchTokensReader);
 
+            } catch (IOException inputOutputException) {
+                inputOutputException.printStackTrace();
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+        }
     }
 
     /**
@@ -47,10 +64,21 @@ public class TokenSearchAnalyzer implements TokenAnalyzer {
     }
 
     /**
+     * This method reads through the search tokens in a loop.
+     * @param input
+     */
+    public void readSearchTokens(BufferedReader input) {
+        while (input.ready()) {
+            String inputLine = input.readLine();
+            String searchToken =
+        }
+    }
+
+    /**
      * This method generates a text file with
      * @param inputFilePath  The command line location of the input file
      */
-    public void generateOutputFile(String inputFilePath){
+    public void generateOutputFile(String inputFilePath) {
         try (PrintWriter output = new PrintWriter(new BufferedWriter(new
                 FileWriter(properties.getProperty("output.directory") +
                 properties.getProperty("output.file.search.locations"))))) {

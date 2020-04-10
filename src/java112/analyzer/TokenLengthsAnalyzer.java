@@ -63,7 +63,7 @@ public class TokenLengthsAnalyzer implements TokenAnalyzer {
      * number of tokens at that length in two formats: integer and histogram.
      * @param inputFilePath  The command line location of the input file
      */
-    public void generateOutputFile(String inputFilePath){
+    public void generateOutputFile(String inputFilePath) {
         try (PrintWriter output = new PrintWriter(new BufferedWriter(new
                 FileWriter(properties.getProperty("output.directory") +
                 properties.getProperty("output.file.token.lengths"))))) {
