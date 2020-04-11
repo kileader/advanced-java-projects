@@ -49,4 +49,14 @@
             </a>
         </li>
     </ul>
+    <div class="menu_title">
+        Project 3
+    </div>
+    <ul>
+        <li>
+            <a href="/java112/project3-properties" class="menu_link">
+                Properties Servlet
+            </a>
+        </li>
+    </ul>
 </div>

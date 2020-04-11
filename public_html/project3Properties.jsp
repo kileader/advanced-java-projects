@@ -17,15 +17,15 @@
                 </tr>
                 <tr>
                     <td>author.email.address</td>
-                    <td>${project3Properties.author.email.address}</td>
+                    <td>${project3Properties["author.email.address"]}</td>
                 </tr>
                 <tr>
                     <td>course.title</td>
-                    <td>${project3Properties.course.title}</td>
+                    <td>${project3Properties["course.title"]}</td>
                 </tr>
                 <tr>
                     <td>course.meeting.times</td>
-                    <td>${project3Properties.course.meeting.times}</td>
+                    <td>${project3Properties["course.meeting.times"]}</td>
                 </tr>
                 <tr>
                     <td>instructor</td>
@@ -33,7 +33,7 @@
                 </tr>
                 <tr>
                     <td>project.description</td>
-                    <td>${project3Properties.project.description}</td>
+                    <td>${project3Properties["project.description"]}</td>
                 </tr>
             </table>
         </div>
