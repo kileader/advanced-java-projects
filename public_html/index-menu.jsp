@@ -48,6 +48,11 @@
                 Lab 4
             </a>
         </li>
+        <li>
+            <a href="lab36.jsp" class="menu_link">
+                Lab 6
+            </a>
+        </li>
     </ul>
     <div class="menu_title">
         Project 3
