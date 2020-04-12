@@ -22,7 +22,7 @@ public class TokenLengthsAnalyzer implements TokenAnalyzer {
     }
 
     /**
-     * Constructor with one Properties parameter
+     * Constructor that initiates the properties and tokenLengths hashmap
      * @param properties properties to be used for the output
      */
     public TokenLengthsAnalyzer(Properties properties) {
