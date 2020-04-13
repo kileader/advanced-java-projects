@@ -8,7 +8,7 @@ import java.util.*;
  * in the input file.
  * @author Kevin Leader
  */
-public class TokenSearchAnalyzer implements TokenAnalyzer {
+public class TokenLocationSearchAnalyzer implements TokenAnalyzer {
 
     private Map<String, List<Integer>> foundLocations;
     private Properties properties;
@@ -18,7 +18,7 @@ public class TokenSearchAnalyzer implements TokenAnalyzer {
     /**
      * Empty constructor
      */
-    public TokenSearchAnalyzer() {
+    public TokenLocationSearchAnalyzer() {
 
     }
 
@@ -26,7 +26,7 @@ public class TokenSearchAnalyzer implements TokenAnalyzer {
      * Constructor with one Properties parameter
      * @param properties properties to be used for the output
      */
-    public TokenSearchAnalyzer(Properties properties) {
+    public TokenLocationSearchAnalyzer(Properties properties) {
         this();
         this.properties = properties;
         foundLocations = new HashMap<String, List<Integer>>();
@@ -84,7 +84,8 @@ public class TokenSearchAnalyzer implements TokenAnalyzer {
     public void generateOutputFile(String inputFilePath) {
         try (PrintWriter output = new PrintWriter(new BufferedWriter(new
                 FileWriter(properties.getProperty("output.directory") +
-                properties.getProperty("output.file.search.locations"))))) {
+                properties.getProperty("output.file.token.search.locations")))))
+        {
 
             // Define local variables
             Set<Map.Entry<String, List<Integer>>> entries =
