@@ -29,7 +29,7 @@ public class TokenLocationSearchAnalyzer implements TokenAnalyzer {
     public TokenLocationSearchAnalyzer(Properties properties) {
         this();
         this.properties = properties;
-        foundLocations = new HashMap<String, List<Integer>>();
+        foundLocations = new TreeMap<String, List<Integer>>();
         try (InputStream inputStream = this.getClass().getResourceAsStream(
                 properties.getProperty("classpath.search.tokens"));
              InputStreamReader inputStreamReader = new
