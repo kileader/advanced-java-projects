@@ -23,7 +23,7 @@ public class TokenLocationSearchAnalyzer implements TokenAnalyzer {
     }
 
     /**
-     * Constructor with one Properties parameter
+     * Constructor that reads the search tokens starts to construct a map
      * @param properties properties to be used for the output
      */
     public TokenLocationSearchAnalyzer(Properties properties) {
@@ -78,7 +78,8 @@ public class TokenLocationSearchAnalyzer implements TokenAnalyzer {
     }
 
     /**
-     * This method generates a text file with
+     * This method generates a text file with search words and their found
+     * locations.
      * @param inputFilePath  The command line location of the input file
      */
     public void generateOutputFile(String inputFilePath) {

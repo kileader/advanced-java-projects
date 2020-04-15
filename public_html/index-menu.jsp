@@ -59,7 +59,8 @@
     </div>
     <ul>
         <li>
-            <a href="/java112/request-servlet?queryParameter=Hi" class="menu_link">
+            <a href="/java112/request-servlet?queryParameter=Hi"
+                    class="menu_link">
                 HTTP Request Data
             </a>
         </li>
