@@ -1,7 +1,7 @@
 <div id="header">
-    <h1>
+    <h1><a href="/java112">
         Advanced Java Coursework
-    </h1>
+    </a></h1>
     <div id="sub_header">
         Kevin Leader
     </div>

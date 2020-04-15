@@ -30,7 +30,7 @@ public class HttpRequestServlet extends HttpServlet {
 
         HttpRequestData requestData = new HttpRequestData();
 
-        requestData.setRemoteName(request.getRemoteHost());
+        requestData.setRemoteName(request.getLocalName());
         requestData.setRemoteAddress(request.getRemoteAddr());
         requestData.setHttpMethod(request.getMethod());
         requestData.setRequestURI(request.getRequestURI());

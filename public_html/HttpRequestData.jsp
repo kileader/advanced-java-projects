@@ -59,6 +59,7 @@
                     ${requestData.getRequestUserHeader()}
                 </li>
             </ul>
+            <a href="/java112">Home</a>
         </div>
         <%@ include file="index-menu.jsp"%>
         <div id="clear"></div>

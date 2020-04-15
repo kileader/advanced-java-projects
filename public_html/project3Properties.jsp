@@ -36,6 +36,7 @@
                     <td>${project3Properties["project.description"]}</td>
                 </tr>
             </table>
+            <a href="/java112">Home</a>
         </div>
         <%@ include file="index-menu.jsp"%>
         <div id="clear"></div>
