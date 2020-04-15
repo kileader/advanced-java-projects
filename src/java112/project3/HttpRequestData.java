@@ -2,20 +2,23 @@ package java112.project3;
 
 import java.util.*;
 
+/**
+ * This is a JavaBean that holds HTTP request data.
+ */
 public class HttpRequestData {
 
-    private String remoteName; // ServletRequest.getRemoteHost
-    private String remoteAddress; // ServletRequest.getRemoteAddr
-    private String httpMethod; // HttpServletRequest.getMethod
-    private String requestURI; // HttpServletRequest.getRequestURI
-    private StringBuffer requestURL; // http getRequestURL
-    private String requestProtocol; // getProtocol
-    private String serverName; // getServerName
-    private int serverPort; // getServerPort
-    private Locale locale; // getLocale
-    private String queryString; // getQueryString
-    private String queryParameter; // getParameter(queryParameter)
-    private String requestUserHeader; // getHeader(User-Agent)
+    private String remoteName;
+    private String remoteAddress;
+    private String httpMethod;
+    private String requestURI;
+    private StringBuffer requestURL;
+    private String requestProtocol;
+    private String serverName;
+    private int serverPort;
+    private Locale locale;
+    private String queryString;
+    private String queryParameter;
+    private String requestUserHeader;
 
     public HttpRequestData() {
     }

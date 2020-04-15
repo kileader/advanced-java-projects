@@ -11,5 +11,5 @@ I didn't use any outside resources.
 
 Project 3:
 I looked up alot of javadocs on oracle. Jared and Simon helped me some on
-slack. I looked up how to round numbers at
+slack.
 https://www.baeldung.com/java-round-decimal-number

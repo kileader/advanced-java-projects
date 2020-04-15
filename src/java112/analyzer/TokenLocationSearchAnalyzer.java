@@ -13,7 +13,7 @@ public class TokenLocationSearchAnalyzer implements TokenAnalyzer {
     private Map<String, List<Integer>> foundLocations;
     private Properties properties;
     private int currentTokenLocation;
-    private final int maxLineLength = 80;
+    private static final int MAX_LINE_LENGTH = 80; // do all upper
 
     /**
      * Empty constructor
@@ -129,7 +129,7 @@ public class TokenLocationSearchAnalyzer implements TokenAnalyzer {
                         currentLocationIndex++;
 
                         // Change to new line if the location will put over 80
-                        if (lineLength + 2 > 80) {
+                        if (lineLength + 2 > MAX_LINE_LENGTH) {
                             output.print("\n");
                             // Set the linelength to length of location
                             lineLength = String.valueOf(location).length();
