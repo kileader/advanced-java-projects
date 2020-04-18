@@ -10,6 +10,6 @@ Project 2:
 I didn't use any outside resources.
 
 Project 3:
-I looked up alot of javadocs on oracle. Jared and Simon helped me some on
-slack.
+I looked up alot of javadocs on oracle. Jared, Elizabeth, and Simon helped me 
+some on slack. Looked up how to use Math.round at: 
 https://www.baeldung.com/java-round-decimal-number
