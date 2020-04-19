@@ -66,7 +66,7 @@ public class FileSummaryAnalyzer implements TokenAnalyzer {
         try (PrintWriter output = new PrintWriter(new BufferedWriter(
                 new FileWriter(properties.getProperty("output.directory")
                 + properties.getProperty("output.file.summary"))))) {
-            output.println("Application: "
+            output.println("Application: " 
                     + properties.getProperty("application.name"));
             output.println("Author: " + properties.getProperty("author"));
             output.println("Author Email: "
