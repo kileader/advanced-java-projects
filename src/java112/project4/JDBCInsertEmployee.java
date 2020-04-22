@@ -14,6 +14,7 @@ public class JDBCInsertEmployee {
         Connection connection = null;
         Statement statement = null;
         int rowsAffected;
+        ResultSet resultSet = null;
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -31,7 +32,31 @@ public class JDBCInsertEmployee {
 
             rowsAffected = statement.executeUpdate(insertString);
 
-//            System.out.println();
+            System.out.println();
+
+            String ssn = args[2];
+            String queryString = "SELECT * FROM employees WHERE ssn = '" +
+                    ssn + "'";
+
+            System.out.println("queryString: " + queryString);
+
+            System.out.println();
+
+            resultSet = statement.executeQuery(queryString);
+
+            while (resultSet.next()) {
+                String employeeId = resultSet.getString("emp_id");
+                String firstName = resultSet.getString("first_name");
+                String lastName = resultSet.getString("last_name");
+                String socialSecurity = resultSet.getString("ssn");
+                String department = resultSet.getString("dept");
+                String roomNumber = resultSet.getString("room");
+                String phoneNumber = resultSet.getString("phone");
+                System.out.println(" Inserted Record: " + employeeId + " "
+                        + firstName + " " + lastName + " " + socialSecurity
+                        + " " + department + " " + roomNumber
+                        + " " + phoneNumber);
+            }
 
 //            while (resultSet.next()) {
 //                String employeeId = resultSet.getString("emp_id");
