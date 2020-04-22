@@ -9,7 +9,7 @@ import java.sql.*;
  */
 public class JDBCInsertEmployee {
 
-    public void runSample() {
+    public void runInsert() {
 
         Connection connection = null;
         Statement statement = null;
@@ -23,38 +23,23 @@ public class JDBCInsertEmployee {
 
             statement = connection.createStatement();
 
-            String name = "Smith";
-            String insertString = "INSERT emp_id, first_name, last_name"
-                    + " FROM employees " + "WHERE last_name like '"
-                    + name + "%'";
+            String name = "Smith"
+            String insertString = "INSERT INTO employees VALUES (0, 'Kevin', " +
+                    "'Leader', '583-59-6890', 'IT', '999', '999-0000')";
 
-            System.out.println("queryString: " + insertString);
+            System.out.println("insertString: " + insertString);
 
             rowsAffected = statement.executeUpdate(insertString);
 
-            System.out.println();
+//            System.out.println();
 
-            while (resultSet.next()) {
-                String employeeId = resultSet.getString("emp_id");
-                String firstName = resultSet.getString("first_name");
-                String lastName = resultSet.getString("last_name");
-                System.out.println(" Row: " + employeeId + " "
-                        + firstName + " " + lastName);
-            }
-
-            System.out.println();
-
-            ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
-            int columns = resultSetMetaData.getColumnCount();
-            String nameOne = resultSetMetaData.getColumnName(1);
-            String typeOne = resultSetMetaData.getColumnTypeName(1);
-            String labelOne = resultSetMetaData.getColumnLabel(1);
-            System.out.println(" Column count : " + columns);
-            System.out.println(" Column 1 name : " + nameOne);
-            System.out.println(" Column 1 type : " + typeOne);
-            System.out.println(" Column 1 label name : " + labelOne);
-
-            System.out.println();
+//            while (resultSet.next()) {
+//                String employeeId = resultSet.getString("emp_id");
+//                String firstName = resultSet.getString("first_name");
+//                String lastName = resultSet.getString("last_name");
+//                System.out.println(" Row: " + employeeId + " "
+//                        + firstName + " " + lastName);
+//            }
 
         } catch (ClassNotFoundException classNotFound) {
             classNotFound.printStackTrace();
@@ -65,9 +50,9 @@ public class JDBCInsertEmployee {
             exception.printStackTrace();
         } finally {
             try {
-                if (resultSet != null) {
-                    resultSet.close();
-                }
+//                if (resultSet != null) {
+//                    resultSet.close();
+//                }
 
                 if (statement != null) {
                     statement.close();
@@ -94,9 +79,9 @@ public class JDBCInsertEmployee {
      */
     public static void main(String[] args) {
 
-        JDBCSelectEmployees employees = new JDBCSelectEmployees();
+        JDBCInsertEmployee insert = new JDBCInsertEmployee();
 
-        employees.runSample();
+        insert.runInsert();
 
     }
 }
