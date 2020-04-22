@@ -5,8 +5,7 @@ import java.sql.*;
 
 /**
  *
- *@author     Eric Knapp
- *
+ * @author Kevin Leader
  */
 public class JDBCInsertEmployee {
 
@@ -14,7 +13,7 @@ public class JDBCInsertEmployee {
 
         Connection connection = null;
         Statement statement = null;
-        ResultSet resultSet = null;
+        int rowsAffected = null;
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -25,13 +24,13 @@ public class JDBCInsertEmployee {
             statement = connection.createStatement();
 
             String name = "Smith";
-            String queryString = "SELECT emp_id, first_name, last_name"
+            String insertString = "INSERT emp_id, first_name, last_name"
                     + " FROM employees " + "WHERE last_name like '"
                     + name + "%'";
 
-            System.out.println("queryString: " + queryString);
+            System.out.println("queryString: " + insertString);
 
-            resultSet = statement.executeQuery(queryString);
+            rowsAffected = statement.executeUpdate(insertString);
 
             System.out.println();
 
