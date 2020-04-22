@@ -13,7 +13,7 @@ public class JDBCInsertEmployee {
 
         Connection connection = null;
         Statement statement = null;
-        int rowsAffected = null;
+        int rowsAffected;
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -23,7 +23,6 @@ public class JDBCInsertEmployee {
 
             statement = connection.createStatement();
 
-            String name = "Smith"
             String insertString = "INSERT INTO employees VALUES (0, 'Kevin', " +
                     "'Leader', '583-59-6890', 'IT', '999', '999-0000')";
 
