@@ -9,7 +9,7 @@ import java.sql.*;
  */
 public class JDBCInsertEmployee {
 
-    public void runInsert(args) {
+    public void runInsert(String[] args) {
 
         Connection connection = null;
         Statement statement = null;
@@ -23,8 +23,9 @@ public class JDBCInsertEmployee {
 
             statement = connection.createStatement();
 
-            String insertString = "INSERT INTO employees VALUES (0, 'Kevin', " +
-                    "'Leader', '583-59-6890', 'IT', '999', '999-0000')";
+            String insertString = "INSERT INTO employees VALUES (0, '" +
+                    args[0] + "', '" + args[1] + "', '" + args[2] + "', '" +
+                    args[3] + "', '" + args[4] + "', '" + args[5] + "')";
 
             System.out.println("insertString: " + insertString);
 
@@ -79,9 +80,9 @@ public class JDBCInsertEmployee {
                     + "to the command line.");
             return;
         } else {
-            JDBCInsertEmployee insert = new JDBCInsertEmployee(args);
+            JDBCInsertEmployee insert = new JDBCInsertEmployee();
 
-            insert.runInsert();
+            insert.runInsert(args);
         }
     }
 }
