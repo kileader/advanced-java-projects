@@ -20,4 +20,4 @@ lib/*.ear
 
 hs_err_pid*
 
-!config/
+!search-tokens.txt
