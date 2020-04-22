@@ -9,7 +9,7 @@ import java.sql.*;
  */
 public class JDBCInsertEmployee {
 
-    public void runInsert() {
+    public void runInsert(args) {
 
         Connection connection = null;
         Statement statement = null;
@@ -69,18 +69,19 @@ public class JDBCInsertEmployee {
     }
 
     /**
-     *  The main program for the JDBCSelectWhereExample class
-     *
-     *@param  args  The command line arguments
-     *
-     *@since
-     *
+     * The main method that executes an insert statement. It checks if the
+     * command line has 6 arguments then runs the insert if true.
+     * @param  args  The command line arguments
      */
     public static void main(String[] args) {
+        if (args.length != 6) {
+            System.out.println("Please only input six arguments "
+                    + "to the command line.");
+            return;
+        } else {
+            JDBCInsertEmployee insert = new JDBCInsertEmployee(args);
 
-        JDBCInsertEmployee insert = new JDBCInsertEmployee();
-
-        insert.runInsert();
-
+            insert.runInsert();
+        }
     }
 }

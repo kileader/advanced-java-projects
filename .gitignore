@@ -19,3 +19,5 @@ lib/*.ear
 .DS_Store
 
 hs_err_pid*
+
+!config/
