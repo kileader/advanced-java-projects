@@ -12,7 +12,8 @@ public class JDBCPreparedStatement {
 
     public void runInsert(String[] args) {
 
-        Connection connection = null;
+        Connection con = null;
+        PreparedStatement preparedInsert = null;
         Statement statement = null;
         int rowsAffected;
         ResultSet resultSet = null;
@@ -20,31 +21,30 @@ public class JDBCPreparedStatement {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            connection = DriverManager.getConnection(
+            con = DriverManager.getConnection(
                     "jdbc:mysql://localhost/student", "student", "student");
 
-            statement = connection.createStatement();
+            preparedInsert = con.prepareStatement("INSERT INTO employees " +
+                    "VALUES (0, ?, ?, ?, ?, ?, ?)");
 
-            String insertString = "INSERT INTO employees VALUES (0, '" +
-                    args[0] + "', '" + args[1] + "', '" + args[2] + "', '" +
-                    args[3] + "', '" + args[4] + "', '" + args[5] + "')";
+            preparedInsert.setString(1, args[0]);
+            preparedInsert.setString(2, args[1]);
+            preparedInsert.setString(3, args[2]);
+            preparedInsert.setString(4, args[3]);
+            preparedInsert.setString(5, args[4]);
+            preparedInsert.setString(6, args[5]);
 
-            System.out.println("insertString: " + insertString);
-
-            rowsAffected = statement.executeUpdate(insertString);
-
-            System.out.println();
+            rowsAffected = preparedInsert.executeUpdate();
 
             String ssn = args[2];
             String queryString = "SELECT * FROM employees WHERE ssn = '" +
                     ssn + "'";
 
             System.out.println("queryString: " + queryString);
-
             System.out.println();
 
+            statement = con.createStatement();
             resultSet = statement.executeQuery(queryString);
-
             while (resultSet.next()) {
                 String employeeId = resultSet.getString("emp_id");
                 String firstName = resultSet.getString("first_name");
@@ -71,9 +71,11 @@ public class JDBCPreparedStatement {
                 if (statement != null) {
                     statement.close();
                 }
-
-                if (connection != null) {
-                    connection.close();
+                if (con != null) {
+                    con.close();
+                }
+                if (preparedInsert != null) {
+                    preparedInsert.close();
                 }
             } catch (SQLException sqlException) {
                 sqlException.printStackTrace();
