@@ -4,11 +4,11 @@ import java.io.*;
 import java.sql.*;
 
 /**
- * The purpose of this class is to use the command line to insert employee
- * data into a database table.
+ * The purpose of this class is to run an employee insert using prepared
+ * statements.
  * @author Kevin Leader
  */
-public class JDBCInsertEmployee {
+public class JDBCPreparedStatement {
 
     public void runInsert(String[] args) {
 
@@ -94,9 +94,8 @@ public class JDBCInsertEmployee {
                     + "to the command line.");
             return;
         } else {
-            JDBCInsertEmployee insert = new JDBCInsertEmployee();
+            JDBCPreparedStatement insert = new JDBCPreparedStatement();
 
             insert.runInsert(args);
         }
     }
-}
