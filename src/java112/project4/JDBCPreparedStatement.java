@@ -88,7 +88,8 @@ public class JDBCPreparedStatement {
     /**
      * The main method that executes an insert statement. It checks if the
      * command line has 6 arguments then runs the insert if true.
-     * @param  args  The command line arguments
+     *
+     * @param args The command line arguments
      */
     public static void main(String[] args) {
         if (args.length != 6) {
@@ -101,3 +102,4 @@ public class JDBCPreparedStatement {
             insert.runInsert(args);
         }
     }
+}
