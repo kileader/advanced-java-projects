@@ -68,7 +68,9 @@ public class Employee {
         this.phone = phone;
     }
 
-//    public void toString() {
-//
-//    }
+    public String toString()
+    {
+        return employeeID + " " + firstName + " " + lastName + " " +
+                socialSecurity + " " + department + " " + room + " " + phone;
+    }
 }
