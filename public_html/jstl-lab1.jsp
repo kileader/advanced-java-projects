@@ -4,7 +4,7 @@
 <c:set var="name" value="Kevin" />
 <html>
 <head>
-    <title>Demo</title>
+    <title>JSTL Lab 1</title>
 </head>
 <body>
 <p>
