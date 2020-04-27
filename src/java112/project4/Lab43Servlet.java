@@ -26,15 +26,15 @@ public class Lab43Servlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        HttpSession session = request.getSession();
+
         String name = request.getParameter("name");
-
-        System.out.println("name: " + name);
-
         String gender = request.getParameter("gender");
 
-        System.out.println("gender: " + gender);
+        session.setAttribute("name", name);
+        session.setAttribute("gender", gender);
 
-        String url = "/lab43.jsp";
+        String url = "/lab43-2.jsp";
 
         RequestDispatcher dispatcher =
                 getServletContext().getRequestDispatcher(url);
