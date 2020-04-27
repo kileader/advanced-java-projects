@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JSTL Lab 2</title>
+    <title>Lab 3</title>
 </head>
 <body>
 <ul>
