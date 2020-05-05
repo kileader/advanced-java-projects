@@ -2,3 +2,4 @@
 . Split FileAnalysis.readInputFile() into two methods. DONE
 . Don't need to initialize totalTokensCount. DONE
 . On summary analyzer check for null first. DONE
+. On search analyzer, change constant to all uppercase. DONE

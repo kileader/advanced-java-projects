@@ -57,7 +57,7 @@ public class DistinctTokenCountsAnalyzer implements TokenAnalyzer {
      * This method generates a text document of distinct tokens and their counts
      * @param inputFilePath  The command line location of the input file
      */
-    public void generateOutputFile(String inputFilePath){
+    public void generateOutputFile(String inputFilePath) {
         try (PrintWriter output = new PrintWriter(new BufferedWriter(
                 new FileWriter(properties.getProperty("output.directory")
                 + properties.getProperty("output.file.distinct.counts"))))) {
