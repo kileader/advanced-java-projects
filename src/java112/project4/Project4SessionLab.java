@@ -26,7 +26,29 @@ public class Project4SessionLab extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        // Get the session object for the request
+        HttpSession session = request.getSession();
 
+        // Create a local integer variable
+        int sessionCounter;
+
+        // Get the session counter from the session
+        sessionCounter = (int)session.getAttribute("project4SessionCounter");
+
+        // If the variable is null, create an instance of the attribute with 1
+        if (sessionCounter == null) {
+            sessionCounter = 1;
+            session.setAttribute("project4SessionCounter", sessionCounter);
+        } else { // Otherwise, increment the counter and set it
+            sessionCounter++;
+            session.setAttribute("project4SessionCounter", sessionCounter);
+        }
+
+        String url = "/project4Session.jsp";
+
+        RequestDispatcher dispatcher =
+                getServletContext().getRequestDispatcher(url);
+        dispatcher.forward(request, response);
 
     }
 }

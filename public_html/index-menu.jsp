@@ -70,4 +70,12 @@
             </a>
         </li>
     </ul>
+    <div class="menu_title">
+        Unit 4 Labs
+    </div>
+    <ul>
+        <li>
+            <a href="/java112/session-lab"
+        </li>
+    </ul>
 </div>
