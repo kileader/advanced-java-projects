@@ -76,6 +76,9 @@
     <ul>
         <li>
             <a href="/java112/session-lab"
+                    class="menu_link">
+                Session Lab
+            </a>
         </li>
     </ul>
 </div>

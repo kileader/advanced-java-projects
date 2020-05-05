@@ -29,11 +29,9 @@ public class Project4SessionLab extends HttpServlet {
         // Get the session object for the request
         HttpSession session = request.getSession();
 
-        // Create a local integer variable
-        int sessionCounter;
-
-        // Get the session counter from the session
-        sessionCounter = (int)session.getAttribute("project4SessionCounter");
+        // Define sessionCounter and get the counter from the session
+        Integer sessionCounter =
+                (Integer) session.getAttribute("project4SessionCounter");
 
         // If the variable is null, create an instance of the attribute with 1
         if (sessionCounter == null) {
@@ -44,8 +42,8 @@ public class Project4SessionLab extends HttpServlet {
             session.setAttribute("project4SessionCounter", sessionCounter);
         }
 
+        // Forward to the jsp
         String url = "/project4Session.jsp";
-
         RequestDispatcher dispatcher =
                 getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
