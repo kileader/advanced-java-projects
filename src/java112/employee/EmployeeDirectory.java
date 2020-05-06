@@ -8,14 +8,14 @@ import java112.utilities.*;
  *
  * @author Kevin Leader
  */
-public class EmployerDirectory {
+public class EmployeeDirectory {
 
     private Properties properties;
 
     /**
      * Empty constructor
      */
-    public EmployerDirectory() {
+    public EmployeeDirectory() {
 
     }
 
@@ -23,7 +23,7 @@ public class EmployerDirectory {
      * Constructor with one Properties parameter
      * @param properties properties to be used for the output
      */
-    public EmployerDirectory(Properties properties) {
+    public EmployeeDirectory(Properties properties) {
         this();
         this.properties = properties;
     }
