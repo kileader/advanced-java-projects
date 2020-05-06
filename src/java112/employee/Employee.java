@@ -68,9 +68,16 @@ public class Employee {
         this.phone = phone;
     }
 
-    public String toString()
-    {
-        return employeeID + " " + firstName + " " + lastName + " " +
-                socialSecurity + " " + department + " " + room + " " + phone;
+    @java.lang.Override
+    public java.lang.String toString() {
+        return "Employee{" +
+                "employeeID='" + employeeID + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", socialSecurity='" + socialSecurity + '\'' +
+                ", department='" + department + '\'' +
+                ", room='" + room + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
     }
 }
