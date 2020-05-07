@@ -1,4 +1,4 @@
-package java112.analyzer;
+package java112.employee;
 
 import java.io.*;
 import java.sql.*;
@@ -49,14 +49,28 @@ public class EmployeeDirectory {
 
     /**
      *
+     * @param args
      */
-//    public void addNewRecord(Search search) {
-//        Connection connection = establishConnection();
-//
-//        Statement statement = connection.createStatement();
-//
-//        //String queryString =
-//    }
+    private void addEmployee(String[] args) {
+
+        Connection connection = establishConnection();
+
+        try {
+
+            Statement statement = connection.createStatement();
+
+            String insertString = "INSERT INTO employees VALUES (0, '" +
+                    args[0] + "', '" + args[1] + "', '" + args[2] + "', '" +
+                    args[3] + "', '" + args[4] + "', '" + args[5] + "')";
+
+            System.out.println("insertString: " + insertString);
+
+            int rowsAffected = statement.executeUpdate(insertString);
+
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        }
+    }
 
     public void Search() {
 
