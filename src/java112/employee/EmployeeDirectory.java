@@ -51,7 +51,7 @@ public class EmployeeDirectory {
      *
      * @param args
      */
-    private void addEmployee(String[] args) {
+    public void addEmployee(String[] args) {
 
         Connection connection = establishConnection();
 
@@ -72,7 +72,27 @@ public class EmployeeDirectory {
         }
     }
 
-    public void Search() {
+    public Search searchEmployees(String searchTerm, String searchType) {
 
+    }
+
+    private searchViaID(Search search) {
+
+        Connection connection = establishConnection();
+
+        try {
+
+            Statement statement = connection.createStatement();
+
+            String queryString = "SELECT * FROM employees WHERE employeeID = '"
+                    + search.searchTerm;
+
+            System.out.println("insertString: " + insertString);
+
+            int rowsAffected = statement.executeUpdate(insertString);
+
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        }
     }
 }
