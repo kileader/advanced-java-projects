@@ -81,4 +81,20 @@
             </a>
         </li>
     </ul>
+    <div class="menu_title">
+        Project 4
+    </div>
+    <ul>
+        <li>
+            <a href=""
+               class="menu_link">
+                Employee Search
+            </a>
+        </li>
+        <li>
+            <a href="" class="menu_link">
+                Add Employee
+            </a>
+        </li>
+    </ul>
 </div>
