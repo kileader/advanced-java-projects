@@ -1,11 +1,12 @@
 package java112.analyzer;
 
 import java.io.*;
+import java.sql.*;
 import java.util.*;
 import java112.utilities.*;
 
 /**
- *
+ * This class is for
  */
 public class EmployeeDirectory {
 
@@ -27,45 +28,35 @@ public class EmployeeDirectory {
         this.properties = properties;
     }
 
-    private String establishConnection {
+    /**
+     * Returns the database connection
+     * @return the database connection
+     */
+    private Connection establishConnection() {
         Connection connection = null;
-        Statement statement = null;
-        ResultSet resultSet = null;
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName(properties.getProperty("driver"));
             connection = DriverManager.getConnection(
-                    "jdbc:mysql://localhost/student", "student", "student");
+                    properties.getProperty("url"), "student", "student");
         } catch (ClassNotFoundException classNotFound) {
             classNotFound.printStackTrace();
-        } catch (SQLException sqlException) {
-            sqlException.printStackTrace();
         } catch (Exception exception) {
             System.err.println("General Error");
             exception.printStackTrace();
-        } finally {
-            try {
-                if (resultSet != null) {
-                    resultSet.close();
-                }
-
-                if (statement != null) {
-                    statement.close();
-                }
-
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException sqlException) {
-                sqlException.printStackTrace();
-            } catch (Exception exception) {
-                exception.printStackTrace();
-            }
         }
+        return connection;
     }
 
-    public void addNewRecord() {
-
-    }
+    /**
+     *
+     */
+//    public void addNewRecord(Search search) {
+//        Connection connection = establishConnection();
+//
+//        Statement statement = connection.createStatement();
+//
+//        //String queryString =
+//    }
 
     public void Search() {
 
