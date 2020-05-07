@@ -2,6 +2,9 @@ package java112.employee;
 
 import java.util.*;
 
+/**
+ * This is a javabean representing an employee search
+ */
 public class Search {
 
     private String searchType;

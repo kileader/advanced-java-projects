@@ -6,7 +6,6 @@ import java112.utilities.*;
 
 /**
  *
- * @author Kevin Leader
  */
 public class EmployeeDirectory {
 
@@ -28,9 +27,41 @@ public class EmployeeDirectory {
         this.properties = properties;
     }
 
-//    private String establishConnection {
-//        return
-//    }
+    private String establishConnection {
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection(
+                    "jdbc:mysql://localhost/student", "student", "student");
+        } catch (ClassNotFoundException classNotFound) {
+            classNotFound.printStackTrace();
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        } catch (Exception exception) {
+            System.err.println("General Error");
+            exception.printStackTrace();
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+
+                if (statement != null) {
+                    statement.close();
+                }
+
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException sqlException) {
+                sqlException.printStackTrace();
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+        }
+    }
 
     public void addNewRecord() {
 
