@@ -8,7 +8,7 @@
     <c:import url="index-header.jsp" />
     <div id="main_content_top"></div>
     <div id="main_content">
-        <c:import url="employeeSearchResuts-content.jsp" />
+        <c:import url="employeeSearchResults-content.jsp" />
         <c:import url="index-menu.jsp" />
         <div id="clear"></div>
     </div>
