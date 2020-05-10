@@ -75,8 +75,7 @@
     </div>
     <ul>
         <li>
-            <a href="/java112/session-lab"
-                    class="menu_link">
+            <a href="/java112/session-lab" class="menu_link">
                 Session Lab
             </a>
         </li>
@@ -86,8 +85,7 @@
     </div>
     <ul>
         <li>
-            <a href=""
-               class="menu_link">
+            <a href="/java112/employee-search" class="menu_link">
                 Employee Search
             </a>
         </li>
