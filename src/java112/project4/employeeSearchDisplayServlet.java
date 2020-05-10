@@ -17,11 +17,11 @@ import javax.servlet.annotation.*;
 public class employeeSearchDisplayServlet extends HttpServlet {
 
     /**
-     * Method that forwards to employeeSearch.jsp
-     * @param request request from user
-     * @param response response from user
+     * This method runs every time the servlet is accessed.
+     * @param  request          request from user
+     * @param  response         response from server
      * @throws ServletException displays exception information to the browser
-     * @throws IOException exception for when forward doesn't work
+     * @throws IOException      exception for when PrintWriter doesn't work
      */
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
