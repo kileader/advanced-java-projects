@@ -12,6 +12,10 @@ public class Employee {
     private String room;
     private String phone;
 
+    public Employee() {
+
+    }
+
     public String getEmployeeID() {
         return employeeID;
     }

@@ -9,7 +9,7 @@ public class Search {
 
     private String searchType;
     private String searchTerm;
-    private List<String> results;
+    private List<Employee> results;
     private boolean foundEmployees;
 
     public Search() {
@@ -32,11 +32,11 @@ public class Search {
         this.searchTerm = searchTerm;
     }
 
-    public List<String> getResults() {
+    public List<Employee> getResults() {
         return results;
     }
 
-    public void setResults(List<String> results) {
+    public void setResults(List<Employee> results) {
         this.results = results;
     }
 

@@ -72,27 +72,27 @@ public class EmployeeDirectory {
         }
     }
 
-    public Search searchEmployees(String searchTerm, String searchType) {
+//    public Search searchEmployees(String searchTerm, String searchType) {
+//
+//    }
 
-    }
-
-    private searchViaID(Search search) {
-
-        Connection connection = establishConnection();
-
-        try {
-
-            Statement statement = connection.createStatement();
-
-            String queryString = "SELECT * FROM employees WHERE employeeID = '"
-                    + search.searchTerm;
-
-            System.out.println("insertString: " + insertString);
-
-            int rowsAffected = statement.executeUpdate(insertString);
-
-        } catch (SQLException sqlException) {
-            sqlException.printStackTrace();
-        }
-    }
+//    private void searchViaID(Search search) {
+//
+//        Connection connection = establishConnection();
+//
+//        try {
+//
+//            Statement statement = connection.createStatement();
+//
+//            String queryString = "SELECT * FROM employees WHERE employeeID = '"
+//                    + search.searchTerm;
+//
+//            System.out.println("insertString: " + insertString);
+//
+//            int rowsAffected = statement.executeUpdate(insertString);
+//
+//        } catch (SQLException sqlException) {
+//            sqlException.printStackTrace();
+//        }
+//    }
 }
