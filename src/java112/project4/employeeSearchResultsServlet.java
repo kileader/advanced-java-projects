@@ -7,17 +7,17 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
 /**
- * This servlet forwards to the employeeSearch.jsp
+ * This servlet generates the results of an employee search.
  * @author Kevin Leader
  */
 @WebServlet(
-        name = "employeeSearch",
-        urlPatterns = { "/employee-search" }
+        name = "employeeSearchResults",
+        urlPatterns = { "/employee-search-results" }
 )
-public class employeeSearchServlet extends HttpServlet {
+public class employeeSearchDisplayServlet extends HttpServlet {
 
     /**
-     * Method that forwards to employeeSearch.jsp
+     *
      * @param request request from user
      * @param response response from user
      * @throws ServletException displays exception information to the browser
@@ -26,8 +26,10 @@ public class employeeSearchServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Forward to the jsp
-        String url = "/employeeSearch.jsp";
+
+
+        // Forward to the results jsp
+        String url = "/employeeSearchResults.jsp";
         RequestDispatcher dispatcher =
                 getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);

@@ -2,7 +2,7 @@
     <h2>
         Employee Search
     </h2>
-    <form action="" method="GET">
+    <form action="/java112/employee-search-results" method="GET">
         <label for="searchTerm">Search Term: </label>
         <input id="searchTerm" type="text" name="searchTerm" /><br />
         <p>Search Type:</p>
