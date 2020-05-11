@@ -15,7 +15,7 @@ import java112.employee.*;
         name = "employeeSearchResults",
         urlPatterns = { "/employee-search-results" }
 )
-public class employeeSearchResultsServlet extends HttpServlet {
+public class EmployeeSearchResultsServlet extends HttpServlet {
 
     /**
      * This method runs every time the servlet is accessed.
@@ -27,23 +27,24 @@ public class employeeSearchResultsServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Defining ServletContext and EmployeeDirectory objects
+        // Define ServletContext and EmployeeDirectory objects
         ServletContext context = getServletContext();
         EmployeeDirectory empDir =
                 (EmployeeDirectory) context.getAttribute("employeeDirectory");
 
-        // Grabbing session data from form
+        // Grab session data from form
         HttpSession session = request.getSession();
 
-        // Getting search type and search term from form
+        // Get search type and search term from form
         String searchTerm = request.getParameter("searchTerm");
         String searchType = request.getParameter("searchType");
 
-        // TODO call search method in EmployeeDirectory and pass type and term
-        // return search object
+        // Call search method in EmployeeDirectory and pass type and term.
+        // It should return a filled out search object
+        Search search = empDir.searchEmployees(searchType, searchTerm);
 
-        // Search search = fiosjfoi
-        // session.setAttribute("search", search);
+        // Place the search object into the session
+        session.setAttribute("search", search);
 
         // Forward to the results jsp
         String url = "/employeeSearchResults.jsp";

@@ -14,7 +14,7 @@ import javax.servlet.annotation.*;
         name = "employeeSearch",
         urlPatterns = { "/employee-search" }
 )
-public class employeeSearchDisplayServlet extends HttpServlet {
+public class EmployeeSearchDisplayServlet extends HttpServlet {
 
     /**
      * This method runs every time the servlet is accessed.
