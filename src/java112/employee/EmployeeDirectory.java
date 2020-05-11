@@ -1,9 +1,8 @@
 package java112.employee;
 
 import java.io.*;
-import java.sql.*;
 import java.util.*;
-import java112.utilities.*;
+import java.sql.*;
 
 /**
  * This class is for performing searches and adds to the employees table
@@ -21,7 +20,7 @@ public class EmployeeDirectory {
 
     /**
      * Constructor with one Properties parameter
-     * @param properties properties to be used for the output
+     * @param properties    properties to be used for the output
      */
     public EmployeeDirectory(Properties properties) {
         this();
@@ -49,15 +48,15 @@ public class EmployeeDirectory {
 
     /**
      * Adds a new record to the employee table in the database
-     * @param fields  Strings representing the fields of an employee record.
+     * @param fields    Strings representing the fields of an employee record.
      */
     public void addEmployee(String[] fields) {
 
         Connection connection = establishConnection();
+        Statement statement = null;
 
         try {
-
-            Statement statement = connection.createStatement();
+            statement = connection.createStatement();
 
             String insertString = "INSERT INTO employees VALUES (0, '" +
                     fields[0] + "', '" + fields[1] + "', '" + fields[2] +
@@ -70,90 +69,154 @@ public class EmployeeDirectory {
 
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
+        } finally {
+            try {
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException sqlException) {
+                sqlException.printStackTrace();
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
         }
     }
 
     /**
-     * Performs a search on the employees table, depending on the type and term
+     * Redirects a search on the employees table, depending on the type and term
      * @param searchType    Describes the search type: ID, Last Name,
      *                      or First Name
      * @param searchTerm    Describes the actual ID, last name,
      *                      or first name being searched
-     * @return              a Search object with the type and term set
+     * @return              a Search object with all values set
      */
     public Search searchEmployees(String searchType, String searchTerm) {
 
+        // Creating search object
         Search search = new Search();
 
+        // Setting the type and term in the search object
         search.setSearchType(searchType);
         search.setSearchTerm(searchTerm);
 
+        // Running the appropriate search function based on the type
         if (searchType == "id") {
-            searchByID(search);
+            searchById(search);
         } else if (searchType == "lastName") {
             searchByLastName(search);
         } else if (searchType == "firstName") {
             searchByFirstName(search);
         }
+        return search;
     }
 
-    private void searchByID(Search search) {
-
-        Connection connection = establishConnection();
-
-        try {
-
-            Statement statement = connection.createStatement();
-
-            String queryString = "SELECT * FROM employees WHERE employeeID = '"
-                    + search.searchTerm;
-
-            System.out.println("insertString: " + insertString);
-
-            int rowsAffected = statement.executeUpdate(insertString);
-
-        } catch (SQLException sqlException) {
-            sqlException.printStackTrace();
-        }
+    /**
+     * Creates a queryString for emp_id and calls function to executes it.
+     * @param search        a Search object with type and term set
+     * @return              a Search object with all values set
+     */
+    private Search searchById(Search search) {
+        String queryString = "SELECT * FROM employees WHERE emp_id = '"
+                + search.getSearchTerm();
+        return searchByQuery(queryString, search);
     }
 
-    private void searchByLastName(Search search) {
-
-        Connection connection = establishConnection();
-
-        try {
-
-            Statement statement = connection.createStatement();
-
-            String queryString = "SELECT * FROM employees WHERE employeeID = '"
-                    + search.searchTerm;
-
-            System.out.println("insertString: " + insertString);
-
-            int rowsAffected = statement.executeUpdate(insertString);
-
-        } catch (SQLException sqlException) {
-            sqlException.printStackTrace();
-        }
+    /**
+     * Creates a queryString for last_name and calls function to execute it
+     * @param search        a Search object with type and term set
+     * @return              a Search object with all values set
+     */
+    private Search searchByLastName(Search search) {
+        String queryString = "SELECT * FROM employees WHERE last_name like '%"
+                + search.getSearchTerm() + "%'";
+        return searchByQuery(queryString, search);
     }
 
-    private void searchByFirstName(Search search) {
+    /**
+     * Creates a queryString for first_name and calls function to execute it
+     * @param search        a Search object with type and term set
+     * @return              a Search object with all values set
+     */
+    private Search searchByFirstName(Search search) {
+        String queryString = "SELECT * FROM employees WHERE first_name like '%"
+                + search.getSearchTerm() + "%'";
+        return searchByQuery(queryString, search);
+    }
 
+    /**
+     * Searches the employees table based on the query
+     * @param queryString   query string that changes depending on search type
+     * @param search        a Search object with the type and term set
+     * @return              a Search object with all values set
+     */
+    private Search searchByQuery(String queryString, Search search) {
+
+        // Defining connection
         Connection connection = establishConnection();
 
+        // Declaring variables
+        ResultSet resultSet = null;
+        Statement statement = null;
+
+        // Trying to execute sql select by emp_id
         try {
+            statement = connection.createStatement();
 
-            Statement statement = connection.createStatement();
+            System.out.println("queryString: " + queryString);
 
-            String queryString = "SELECT * FROM employees WHERE employeeID = '"
-                    + search.searchTerm;
+            resultSet = statement.executeQuery(queryString);
+            System.out.println();
 
-            System.out.println("insertString: " + insertString);
+            // If there are no results, set foundEmployees to false
+            if (!resultSet.next()) {
+                search.setFoundEmployees(false);
+            } else {
 
-            int rowsAffected = statement.executeUpdate(insertString);
+                // Otherwise, add each employee to results list in search
+                while (resultSet.next()) {
 
+                    // Create new Employee object
+                    Employee employee = new Employee();
+
+                    // Set each instance variable in Employee from resultSet
+                    employee.setEmployeeId(resultSet.getString("emp_id"));
+                    employee.setFirstName(resultSet.getString("first_name"));
+                    employee.setLastName(resultSet.getString("last_name"));
+                    employee.setSocialSecurity(resultSet.getString("ssn"));
+                    employee.setDepartment(resultSet.getString("dept"));
+                    employee.setRoom(resultSet.getString("room"));
+                    employee.setPhone(resultSet.getString("phone"));
+
+                    // Add the found employee to the results list in search
+                    search.addFoundEmployee(employee);
+                }
+
+                // Since there were results, set foundEmployees to true
+                search.setFoundEmployees(true);
+            }
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException sqlException) {
+                sqlException.printStackTrace();
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
         }
+        // Return the completed search object
+        return search;
     }
 }

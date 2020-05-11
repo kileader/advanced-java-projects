@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Employee {
 
-    private String employeeID;
+    private String employeeId;
     private String firstName;
     private String lastName;
     private String socialSecurity;
@@ -16,12 +16,12 @@ public class Employee {
 
     }
 
-    public String getEmployeeID() {
-        return employeeID;
+    public String getEmployeeId() {
+        return employeeId;
     }
 
-    public void setEmployeeID(String employeeID) {
-        this.employeeID = employeeID;
+    public void setEmployeeId(String employeeId) {
+        this.employeeId = employeeId;
     }
 
     public String getFirstName() {
@@ -75,7 +75,7 @@ public class Employee {
     @java.lang.Override
     public java.lang.String toString() {
         return "Employee{" +
-                "employeeID='" + employeeID + '\'' +
+                "employeeId='" + employeeId + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", socialSecurity='" + socialSecurity + '\'' +
