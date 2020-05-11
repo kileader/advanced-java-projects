@@ -104,13 +104,14 @@ public class EmployeeDirectory {
 
         // Running the appropriate search function based on the type
         if (searchType == "id") {
-            searchById(search);
+            return searchById(search);
         } else if (searchType == "lastName") {
-            searchByLastName(search);
+            return searchByLastName(search);
         } else if (searchType == "firstName") {
-            searchByFirstName(search);
+            return searchByFirstName(search);
+        } else {
+            return search;
         }
-        return search;
     }
 
     /**
