@@ -103,11 +103,11 @@ public class EmployeeDirectory {
         search.setSearchTerm(searchTerm);
 
         // Running the appropriate search function based on the type
-        if (searchType == "id") {
+        if (searchType.equals("id")) {
             return searchById(search);
-        } else if (searchType == "lastName") {
+        } else if (searchType.equals("lastName")) {
             return searchByLastName(search);
-        } else if (searchType == "firstName") {
+        } else if (searchType.equals("firstName")) {
             return searchByFirstName(search);
         } else {
             return search;
@@ -120,7 +120,7 @@ public class EmployeeDirectory {
      * @return              a Search object with all values set
      */
     private Search searchById(Search search) {
-        String queryString = "SELECT * FROM employees WHERE emp_id = '"
+        String queryString = "SELECT * FROM employees WHERE emp_id = "
                 + search.getSearchTerm();
         return searchByQuery(queryString, search);
     }
@@ -166,10 +166,7 @@ public class EmployeeDirectory {
         try {
             statement = connection.createStatement();
 
-            System.out.println("queryString: " + queryString);
-
             resultSet = statement.executeQuery(queryString);
-            System.out.println();
 
             // If there are no results, set foundEmployees to false
             if (!resultSet.next()) {
