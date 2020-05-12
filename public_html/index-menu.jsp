@@ -94,5 +94,10 @@
                 Add Employee
             </a>
         </li>
+        <li>
+            <a href="/java112/analyzer-file-upload" class="menu_link">
+                Analyzer File Upload
+            </a>
+        </li>
     </ul>
 </div>
