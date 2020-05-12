@@ -90,7 +90,7 @@
             </a>
         </li>
         <li>
-            <a href="" class="menu_link">
+            <a href="/java112/employee-add" class="menu_link">
                 Add Employee
             </a>
         </li>

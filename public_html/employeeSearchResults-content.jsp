@@ -5,7 +5,7 @@
     </h2>
     <c:choose>
         <c:when test="${search.foundEmployees == false}">
-            <h3>No Results Found</h3>
+            <h3>No Employees Found</h3>
         </c:when>
         <c:otherwise>
             <table>
