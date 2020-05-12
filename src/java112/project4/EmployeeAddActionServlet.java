@@ -18,16 +18,6 @@ import java112.employee.*;
 public class EmployeeAddActionServlet extends HttpServlet {
 
     /**
-     * This method initializes ServletContext and EmployeeDirectory objects
-     * @throws ServletException
-     */
-    public void init() throws ServletException {
-        ServletContext context = getServletContext();
-        EmployeeDirectory empDir =
-                (EmployeeDirectory) context.getAttribute("employeeDirectory");
-    }
-
-    /**
      * This method runs every time the servlet is accessed.
      * @param  request          request from user
      * @param  response         response from server
@@ -36,6 +26,11 @@ public class EmployeeAddActionServlet extends HttpServlet {
      */
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        // Define context and employeeDirectory
+        ServletContext context = getServletContext();
+        EmployeeDirectory empDir =
+                (EmployeeDirectory) context.getAttribute("employeeDirectory");
 
         // Grab session data from form
         HttpSession session = request.getSession();
@@ -58,6 +53,8 @@ public class EmployeeAddActionServlet extends HttpServlet {
         // Place the insertString into the session
         session.setAttribute("message", message);
 
+        // Redirect to the same jsp
+        String url = "/employeeAdd.jsp";
 
     }
 

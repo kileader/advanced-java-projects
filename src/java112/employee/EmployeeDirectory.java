@@ -55,8 +55,8 @@ public class EmployeeDirectory {
         // Define variables
         Connection connection = establishConnection();
         Statement statement = null;
-        String insertString;
-        int rowsAffected = null;
+        String insertString = "";
+        int rowsAffected = 0;
         String message;
 
         // Attempt to execute the insert
@@ -70,7 +70,7 @@ public class EmployeeDirectory {
 
             System.out.println("insertString: " + insertString);
 
-            int rowsAffected = statement.executeUpdate(insertString);
+            rowsAffected = statement.executeUpdate(insertString);
 
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
@@ -87,15 +87,15 @@ public class EmployeeDirectory {
             } catch (Exception exception) {
                 exception.printStackTrace();
             }
-
-            // Check if the insert worked, and send a message to user
-            if (rowsAffected == null) {
-                message = "SQL Insert Failed"
-            } else {
-                message = "Successfully added employee with : " + insertString;
-            }
-            return message;
         }
+
+        // Check if the insert worked, and send a message to user
+        if (rowsAffected == 0) {
+            message = "SQL Insert Failed";
+        } else {
+            message = "Successfully added employee with : " + insertString;
+        }
+        return message;
     }
 
     /**
