@@ -50,15 +50,20 @@ public class EmployeeDirectory {
      * Adds a new record to the employee table in the database
      * @param fields    Strings representing the fields of an employee record.
      */
-    public void addEmployee(String[] fields) {
+    public String addEmployee(String[] fields) {
 
+        // Define variables
         Connection connection = establishConnection();
         Statement statement = null;
+        String insertString;
+        int rowsAffected = null;
+        String message;
 
+        // Attempt to execute the insert
         try {
             statement = connection.createStatement();
 
-            String insertString = "INSERT INTO employees VALUES (0, '" +
+            insertString = "INSERT INTO employees VALUES (0, '" +
                     fields[0] + "', '" + fields[1] + "', '" + fields[2] +
                     "', '" + fields[3] + "', '" + fields[4] + "', '" +
                     fields[5] + "')";
@@ -82,6 +87,14 @@ public class EmployeeDirectory {
             } catch (Exception exception) {
                 exception.printStackTrace();
             }
+
+            // Check if the insert worked, and send a message to user
+            if (rowsAffected == null) {
+                message = "SQL Insert Failed"
+            } else {
+                message = "Successfully added employee with : " + insertString;
+            }
+            return message;
         }
     }
 

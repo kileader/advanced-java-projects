@@ -40,9 +40,10 @@ public class EmployeeAddActionServlet extends HttpServlet {
         // Grab session data from form
         HttpSession session = request.getSession();
 
-        // Get all the employee data from form
+        // Create string array for passing arguments
         String[] fields = new String[6];
 
+        // Get all the employee data from form
         fields[0] = request.getParameter("firstName");
         fields[1] = request.getParameter("lastName");
         fields[2] = request.getParameter("socialSecurity");
@@ -50,8 +51,14 @@ public class EmployeeAddActionServlet extends HttpServlet {
         fields[4] = request.getParameter("room");
         fields[5] = request.getParameter("phone");
 
-        // Call the addEmployee method in EmployeeDirectory and pass all the
-        // employee fields.
+        // Call addEmployee method in EmployeeDirectory and pass arguments.
+        // Save the returned message.
+        String message = empDir.addEmployee(fields);
+
+        // Place the insertString into the session
+        session.setAttribute("message", message);
+
+
     }
 
 }
