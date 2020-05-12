@@ -59,42 +59,47 @@ public class EmployeeDirectory {
         int rowsAffected = 0;
         String message;
 
-        // Attempt to execute the insert
-        try {
-            statement = connection.createStatement();
-
-            insertString = "INSERT INTO employees VALUES (0, '" +
-                    fields[0] + "', '" + fields[1] + "', '" + fields[2] +
-                    "', '" + fields[3] + "', '" + fields[4] + "', '" +
-                    fields[5] + "')";
-
-            System.out.println("insertString: " + insertString);
-
-            rowsAffected = statement.executeUpdate(insertString);
-
-        } catch (SQLException sqlException) {
-            sqlException.printStackTrace();
-        } finally {
+        // Check if all the fields were filled
+        if (Arrays.asList(fields).contains("")) {
+            message = "Please fill out the whole form.";
+        } else {
+            // Attempt to execute the insert
             try {
-                if (statement != null) {
-                    statement.close();
-                }
-                if (connection != null) {
-                    connection.close();
-                }
+                statement = connection.createStatement();
+
+                insertString = "INSERT INTO employees VALUES (0, '" +
+                        fields[0] + "', '" + fields[1] + "', '" + fields[2] +
+                        "', '" + fields[3] + "', '" + fields[4] + "', '" +
+                        fields[5] + "')";
+
+                System.out.println("insertString: " + insertString);
+
+                rowsAffected = statement.executeUpdate(insertString);
+
             } catch (SQLException sqlException) {
                 sqlException.printStackTrace();
-            } catch (Exception exception) {
-                exception.printStackTrace();
+            } finally {
+                try {
+                    if (statement != null) {
+                        statement.close();
+                    }
+                    if (connection != null) {
+                        connection.close();
+                    }
+                } catch (SQLException sqlException) {
+                    sqlException.printStackTrace();
+                } catch (Exception exception) {
+                    exception.printStackTrace();
+                }
+            }
+            // Check if the insert worked
+            if (rowsAffected == 0) {
+                message = "SQL Insert Failed";
+            } else {
+                message = "Successfully added employee with : " + insertString;
             }
         }
-
-        // Check if the insert worked, and send a message to user
-        if (rowsAffected == 0) {
-            message = "SQL Insert Failed";
-        } else {
-            message = "Successfully added employee with : " + insertString;
-        }
+        // Send a message to user
         return message;
     }
 
@@ -111,20 +116,26 @@ public class EmployeeDirectory {
         // Creating search object
         Search search = new Search();
 
-        // Setting the type and term in the search object
-        search.setSearchType(searchType);
-        search.setSearchTerm(searchTerm);
+        // Check if the form was filled
+        if (searchType != null && searchTerm != null) {
 
-        // Running the appropriate search function based on the type
-        if (searchType.equals("id")) {
-            return searchById(search);
-        } else if (searchType.equals("lastName")) {
-            return searchByLastName(search);
-        } else if (searchType.equals("firstName")) {
-            return searchByFirstName(search);
+            // Seting the type and term in the search object
+            search.setSearchType(searchType);
+            search.setSearchTerm(searchTerm);
+
+            // Run the appropriate search function based on the type
+            if (searchType.equals("id")) {
+                return searchById(search);
+            } else if (searchType.equals("lastName")) {
+                return searchByLastName(search);
+            } else if (searchType.equals("firstName")) {
+                return searchByFirstName(search);
+            }
         } else {
-            return search;
+            // If the form wasn't filled, say no employees were found
+            search.setFoundEmployees(false);
         }
+        return search;
     }
 
     /**

@@ -54,7 +54,8 @@ public class EmployeeAddActionServlet extends HttpServlet {
         session.setAttribute("message", message);
 
         // Redirect to the same jsp
-        String url = "/employeeAdd.jsp";
+        String url = "/java112/employeeAdd.jsp";
+        response.sendRedirect(url);
 
     }
 

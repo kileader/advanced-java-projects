@@ -34,4 +34,5 @@
             </tr>
         </table>
     </form>
+    <h3>${message}</h3>
 </div>
