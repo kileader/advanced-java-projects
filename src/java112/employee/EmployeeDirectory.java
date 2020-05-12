@@ -172,8 +172,10 @@ public class EmployeeDirectory {
             if (!resultSet.next()) {
                 search.setFoundEmployees(false);
             } else {
+                // Point back to the start of the resultSet
+                resultSet.beforeFirst();
 
-                // Otherwise, add each employee to results list in search
+                // Add each employee to results list in search
                 while (resultSet.next()) {
 
                     // Create new Employee object
