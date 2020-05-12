@@ -1,0 +1,33 @@
+package java112.project4;
+
+import java.io.*;
+import java.util.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import javax.servlet.annotation.*;
+import java112.analyzer.*;
+
+/**
+ * This servlet inserts a file into the database by a POST action.
+ * @author Kevin Leader
+ */
+@WebServlet(
+        name = "analyzerFileUploadAction",
+        urlPatterns = { "/analyzer-file-upload-action" }
+)
+public class AnalyzerFileUploadActionServlet extends HttpServlet {
+
+    /**
+     * This method runs every time the servlet is accessed.
+     * @param  request          request from user
+     * @param  response         response from server
+     * @throws ServletException displays exception information to the browser
+     * @throws IOException      exception for when PrintWriter doesn't work
+     */
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+
+    }
+
+}
