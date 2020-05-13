@@ -2,11 +2,10 @@ package java112.project4;
   
 import java.io.*;
 import java.sql.*;
-  
+
 /**
- *
- *@author     Eric Knapp
- *
+ * This selects employees using JDBC
+ * @author eknapp
  */
 public class JDBCSelectEmployees {
   

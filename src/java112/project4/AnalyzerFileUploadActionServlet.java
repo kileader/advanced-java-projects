@@ -40,10 +40,11 @@ public class AnalyzerFileUploadActionServlet extends HttpServlet {
         // Grab session data
         HttpSession session = request.getSession();
 
-        // Get file from form
+        // Get the file name and file from form
         Part filePart = request.getPart("inputFile");
+        String fileName = filePart.getSubmittedFileName();
 
-        // Get the InputStream to store the file somewhere
+        // Get the InputStream to store the file
         fileInputStream = filePart.getInputStream();
 
         // Define variables
@@ -52,13 +53,15 @@ public class AnalyzerFileUploadActionServlet extends HttpServlet {
         String insertString = "";
         int rowsAffected = 0;
         String message = "";
-        String sql = "INSERT INTO analyzerInput VALUES (0, ?)";
+        String sql = "INSERT INTO files VALUES (0, ?, ?)";
 
         // If a file was uploaded, attempt to execute insert
         if (fileInputStream != null) {
             try (PreparedStatement preparedStatement
                          = connection.prepareStatement(sql)) {
-                preparedStatement.setBlob(1, fileInputStream);
+
+                preparedStatement.setString(1, fileName);
+                preparedStatement.setBlob(2, fileInputStream);
 
                 rowsAffected = preparedStatement.executeUpdate();
 
@@ -79,7 +82,7 @@ public class AnalyzerFileUploadActionServlet extends HttpServlet {
             if (rowsAffected == 0) {
                 message = "SQL Insert Failed";
             } else {
-                message = "Successfully added file with : " + insertString;
+                message = "Successfully added " + fileName;
             }
         } else {
             // Otherwise, tell user to get with the program

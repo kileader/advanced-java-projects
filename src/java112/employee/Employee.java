@@ -2,6 +2,9 @@ package java112.employee;
 
 import java.util.*;
 
+/**
+ * This is a JavaBean representing an employee.
+ */
 public class Employee {
 
     private String employeeId;
