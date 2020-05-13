@@ -6,8 +6,6 @@
             enctype="multipart/form-data">
         <label for="inputFile"><h3>Select File to Analyze: </h3></label>
         <input type="file" name="inputFile" id="inputFile"><br />
-        <label for="inputName"><h3>File Name: </h3></label>
-        <input type="text" id="inputName" name="inputName" /><br /><br />
         <input type="submit" value="Upload" name="submit">
     </form>
     <h3>${fileMessage}</h3>

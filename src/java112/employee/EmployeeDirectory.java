@@ -72,8 +72,6 @@ public class EmployeeDirectory {
                         "', '" + fields[3] + "', '" + fields[4] + "', '" +
                         fields[5] + "')";
 
-                System.out.println("insertString: " + insertString);
-
                 rowsAffected = statement.executeUpdate(insertString);
 
             } catch (SQLException sqlException) {

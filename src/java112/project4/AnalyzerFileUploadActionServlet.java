@@ -7,6 +7,9 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
+
 /**
  * This servlet inserts a file into the database by a POST action.
  * @author Kevin Leader
@@ -15,6 +18,7 @@ import javax.servlet.annotation.*;
         name = "analyzerFileUploadAction",
         urlPatterns = { "/analyzer-file-upload-action" }
 )
+@MultipartConfig()
 public class AnalyzerFileUploadActionServlet extends HttpServlet {
 
     private Properties properties;
@@ -29,27 +33,57 @@ public class AnalyzerFileUploadActionServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Define context and a new file object
+        // Define ServletContext and fileInputStream
         ServletContext context = getServletContext();
-        File inputFile = null;
+        InputStream fileInputStream = null;
 
         // Grab session data
         HttpSession session = request.getSession();
 
         // Get file from form
-        inputFile = (File) request.getAttribute("inputFile");
+        Part filePart = request.getPart("inputFile");
+
+        // Get the InputStream to store the file somewhere
+        fileInputStream = filePart.getInputStream();
 
         // Define variables
         properties = (Properties) context.getAttribute("project4Properties");
         Connection connection = establishConnection();
-        Statement statement = null;
         String insertString = "";
         int rowsAffected = 0;
         String message = "";
+        String sql = "INSERT INTO analyzerInput VALUES (0, ?)";
 
         // If a file was uploaded, attempt to execute insert
-        if (inputFile != null) {
-            message = "hi";
+        if (fileInputStream != null) {
+            try (PreparedStatement preparedStatement = connection
+                        .prepareStatement(sql)) {
+
+                preparedStatement.setBlob(1, fileInputStream);
+
+                rowsAffected = preparedStatement.executeUpdate();
+            } catch (SQLException sqlException) {
+                sqlException.printStackTrace();
+            } finally {
+                try {
+                    if (preparedStatement != null) {
+                        preparedStatement.close();
+                    }
+                    if (connection != null) {
+                        connection.close();
+                    }
+                } catch (SQLException sqlException) {
+                    sqlException.printStackTrace();
+                } catch (Exception exception) {
+                    exception.printStackTrace();
+                }
+            }
+            // Check if the insert worked
+            if (rowsAffected == 0) {
+                message = "SQL Insert Failed";
+            } else {
+                message = "Successfully added file with : " + insertString;
+            }
         } else {
             // Otherwise, tell user to get with the program
             message = "Please choose a file to upload.";
