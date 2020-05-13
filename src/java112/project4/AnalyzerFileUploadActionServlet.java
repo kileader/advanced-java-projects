@@ -56,19 +56,16 @@ public class AnalyzerFileUploadActionServlet extends HttpServlet {
 
         // If a file was uploaded, attempt to execute insert
         if (fileInputStream != null) {
-            try (PreparedStatement preparedStatement = connection
-                        .prepareStatement(sql)) {
-
+            try (PreparedStatement preparedStatement
+                         = connection.prepareStatement(sql)) {
                 preparedStatement.setBlob(1, fileInputStream);
 
                 rowsAffected = preparedStatement.executeUpdate();
+
             } catch (SQLException sqlException) {
                 sqlException.printStackTrace();
             } finally {
                 try {
-                    if (preparedStatement != null) {
-                        preparedStatement.close();
-                    }
                     if (connection != null) {
                         connection.close();
                     }
