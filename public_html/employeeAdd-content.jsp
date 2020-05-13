@@ -34,5 +34,5 @@
             </tr>
         </table>
     </form>
-    <h3>${message}</h3>
+    <h3>${employeeMessage}</h3>
 </div>

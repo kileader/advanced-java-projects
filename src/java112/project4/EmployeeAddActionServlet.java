@@ -32,7 +32,7 @@ public class EmployeeAddActionServlet extends HttpServlet {
         EmployeeDirectory empDir =
                 (EmployeeDirectory) context.getAttribute("employeeDirectory");
 
-        // Grab session data from form
+        // Grab session data
         HttpSession session = request.getSession();
 
         // Create string array for passing arguments
@@ -50,8 +50,8 @@ public class EmployeeAddActionServlet extends HttpServlet {
         // Save the returned message.
         String message = empDir.addEmployee(fields);
 
-        // Place the insertString into the session
-        session.setAttribute("message", message);
+        // Place the message into the session
+        session.setAttribute("employeeMessage", message);
 
         // Redirect to the same jsp
         String url = "/java112/employeeAdd.jsp";

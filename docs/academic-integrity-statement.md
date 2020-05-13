@@ -13,3 +13,7 @@ Project 3:
 I looked up alot of javadocs on oracle. Jared, Elizabeth, and Simon helped me 
 some on slack. Looked up how to use Math.round at: 
 https://www.baeldung.com/java-round-decimal-number
+
+Project 4:
+I mostly talked with people on the Slack help channel. I also looked up alot
+on tutorialspoint, w3schools, and stackoverflow.
