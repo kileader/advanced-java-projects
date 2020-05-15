@@ -61,11 +61,16 @@ public class JDBCInsertEmployee {
 
         } catch (ClassNotFoundException classNotFound) {
             classNotFound.printStackTrace();
+            System.err.println("Class not found Exception: " +
+                    classNotFound.getMessage());
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
+            System.err.println("sql Exception: " +
+                    sqlException.getMessage());
         } catch (Exception exception) {
-            System.err.println("General Error");
             exception.printStackTrace();
+            System.err.println("General Exception: " +
+                    exception.getMessage());
         } finally {
             try {
                 if (statement != null) {
@@ -77,8 +82,12 @@ public class JDBCInsertEmployee {
                 }
             } catch (SQLException sqlException) {
                 sqlException.printStackTrace();
+                System.err.println("sql Exception: " +
+                        sqlException.getMessage());
             } catch (Exception exception) {
                 exception.printStackTrace();
+                System.err.println("General Exception: " +
+                        exception.getMessage());
             }
         }
     }

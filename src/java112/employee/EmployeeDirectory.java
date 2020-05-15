@@ -50,7 +50,13 @@ public class EmployeeDirectory {
 
     /**
      * Adds a new record to the employee table in the database
-     * @param fields    Strings representing the fields of an employee record.
+     * @param firstName
+     * @param lastName
+     * @param socialSecurity
+     * @param department
+     * @param room
+     * @param phone
+     * @return a message to the user
      */
     public String addEmployee(String firstName, String lastName,
                               String socialSecurity, String department,

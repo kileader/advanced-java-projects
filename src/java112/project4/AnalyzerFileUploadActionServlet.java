@@ -67,6 +67,8 @@ public class AnalyzerFileUploadActionServlet extends HttpServlet {
 
             } catch (SQLException sqlException) {
                 sqlException.printStackTrace();
+                System.err.println("sql Exception: " +
+                        sqlException.getMessage());
             } finally {
                 try {
                     if (connection != null) {
@@ -74,8 +76,12 @@ public class AnalyzerFileUploadActionServlet extends HttpServlet {
                     }
                 } catch (SQLException sqlException) {
                     sqlException.printStackTrace();
+                    System.err.println("sql Exception: " +
+                            sqlException.getMessage());
                 } catch (Exception exception) {
                     exception.printStackTrace();
+                    System.err.println("General Exception: " +
+                            exception.getMessage());
                 }
             }
             // Check if the insert worked
@@ -111,9 +117,11 @@ public class AnalyzerFileUploadActionServlet extends HttpServlet {
                     properties.getProperty("password"));
         } catch (ClassNotFoundException classNotFound) {
             classNotFound.printStackTrace();
+            System.err.println("Class not found exception: " +
+                    classNotFound.getMessage());
         } catch (Exception exception) {
-            System.err.println("General Error");
-            exception.printStackTrace();
+            System.err.println("General Exception: " +
+                    exception.getMessage());
         }
         return connection;
     }

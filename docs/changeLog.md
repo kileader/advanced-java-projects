@@ -6,5 +6,5 @@
 . Make JavaDoc in beans. DONE
 . Remove message on jsp DONE
 . Add user name and password to property file DONE
-. change add employee to arg for each field
-. System out println to catch
+. change add employee to arg for each field DONE
+. System out println to catch DONE
