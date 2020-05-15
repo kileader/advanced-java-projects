@@ -106,7 +106,9 @@ public class AnalyzerFileUploadActionServlet extends HttpServlet {
         try {
             Class.forName(properties.getProperty("driver"));
             connection = DriverManager.getConnection(
-                    properties.getProperty("url"), "student", "student");
+                    properties.getProperty("url"),
+                    properties.getProperty("username"),
+                    properties.getProperty("password"));
         } catch (ClassNotFoundException classNotFound) {
             classNotFound.printStackTrace();
         } catch (Exception exception) {
