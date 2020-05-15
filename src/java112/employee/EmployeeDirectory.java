@@ -75,6 +75,7 @@ public class EmployeeDirectory {
                 rowsAffected = statement.executeUpdate(insertString);
 
             } catch (SQLException sqlException) {
+                //system out
                 sqlException.printStackTrace();
             } finally {
                 try {

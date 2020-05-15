@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="content">
     <h2>
         Analyzer File Upload
@@ -9,4 +10,5 @@
         <input type="submit" value="Upload" name="submit">
     </form>
     <h3>${fileMessage}</h3>
+    <c:remove var="fileMessage" />
 </div>

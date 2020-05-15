@@ -35,4 +35,5 @@
         </table>
     </form>
     <h3>${employeeMessage}</h3>
+    <c:remove var="employeeMessage" />
 </div>
