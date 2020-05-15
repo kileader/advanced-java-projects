@@ -52,7 +52,9 @@ public class EmployeeDirectory {
      * Adds a new record to the employee table in the database
      * @param fields    Strings representing the fields of an employee record.
      */
-    public String addEmployee(String[] fields) {
+    public String addEmployee(String firstName, String lastName,
+                              String socialSecurity, String department,
+                              String room, String phone) {
 
         // Define variables
         Connection connection = establishConnection();
@@ -62,7 +64,8 @@ public class EmployeeDirectory {
         String message;
 
         // Check if all the fields were filled
-        if (Arrays.asList(fields).contains("")) {
+        if (firstName == null || lastName == null || socialSecurity == null ||
+                department == null || room == null || phone == null) {
             message = "Please fill out the whole form.";
         } else {
             // Attempt to execute the insert
@@ -70,9 +73,9 @@ public class EmployeeDirectory {
                 statement = connection.createStatement();
 
                 insertString = "INSERT INTO employees VALUES (0, '" +
-                        fields[0] + "', '" + fields[1] + "', '" + fields[2] +
-                        "', '" + fields[3] + "', '" + fields[4] + "', '" +
-                        fields[5] + "')";
+                        firstName + "', '" + lastName + "', '" +
+                        socialSecurity + "', '" + department + "', '" +
+                        room + "', '" + phone + "')";
 
                 rowsAffected = statement.executeUpdate(insertString);
 

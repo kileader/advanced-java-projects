@@ -35,20 +35,18 @@ public class EmployeeAddActionServlet extends HttpServlet {
         // Grab session data
         HttpSession session = request.getSession();
 
-        // Create string array for passing arguments
-        String[] fields = new String[6];
-
         // Get all the employee data from form
-        fields[0] = request.getParameter("firstName");
-        fields[1] = request.getParameter("lastName");
-        fields[2] = request.getParameter("socialSecurity");
-        fields[3] = request.getParameter("department");
-        fields[4] = request.getParameter("room");
-        fields[5] = request.getParameter("phone");
+        String firstName = request.getParameter("firstName");
+        String lastName = request.getParameter("lastName");
+        String socialSecurity = request.getParameter("socialSecurity");
+        String department = request.getParameter("department");
+        String room = request.getParameter("room");
+        String phone = request.getParameter("phone");
 
         // Call addEmployee method in EmployeeDirectory and pass arguments.
         // Save the returned message.
-        String message = empDir.addEmployee(fields);
+        String message = empDir.addEmployee(firstName, lastName, socialSecurity,
+                department, room, phone);
 
         // Place the message into the session
         session.setAttribute("employeeMessage", message);
